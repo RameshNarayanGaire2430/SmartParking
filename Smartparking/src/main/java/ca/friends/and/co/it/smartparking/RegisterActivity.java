@@ -17,10 +17,14 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+
+import java.util.*;
+
 public class RegisterActivity extends AppCompatActivity {
 
     TextInputEditText etRegEmail;
     TextInputEditText etRegPassword;
+    TextInputEditText etRegPasswordConfirm;
     TextView tvLoginHere;
     Button btnRegister;
 
@@ -34,6 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         etRegEmail = findViewById(R.id.etRegEmail);
         etRegPassword = findViewById(R.id.etRegPass);
+        etRegPasswordConfirm = findViewById(R.id.etRegPassConfirm);
         tvLoginHere = findViewById(R.id.tvLoginHere);
         btnRegister = findViewById(R.id.btnRegister);
 
@@ -51,6 +56,8 @@ public class RegisterActivity extends AppCompatActivity {
     private void createUser(){
         String email = etRegEmail.getText().toString();
         String password = etRegPassword.getText().toString();
+        String passwordConfirm = etRegPasswordConfirm.getText().toString();
+
 
         if (TextUtils.isEmpty(email)){
             etRegEmail.setError("Email cannot be empty");
@@ -58,7 +65,17 @@ public class RegisterActivity extends AppCompatActivity {
         }else if (TextUtils.isEmpty(password)){
             etRegPassword.setError("Password cannot be empty");
             etRegPassword.requestFocus();
-        }else{
+        }else if (TextUtils.isEmpty(passwordConfirm)){
+            etRegPasswordConfirm.setError("Confirm Your Password");
+            etRegPasswordConfirm.requestFocus();
+        }else if (!(passwordConfirm.matches(password))){
+            etRegPasswordConfirm.setError("Password Does not match!");
+            etRegPasswordConfirm.requestFocus();
+        }else if(etRegPassword.length()<8){
+            etRegPassword.setError("Password should be more then 8 characters");
+            etRegPassword.requestFocus();
+        }else
+        {
             mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
