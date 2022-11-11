@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="ca.friends.and.co.it.smartparking.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home" />
+
+
+    <fragment
+        android:id="@+id/nav_booking"
+        android:name="ca.friends.and.co.it.smartparking.BookingFragment"
+        android:label="@string/booking"
+        tools:layout="@layout/fragment_booking" />
+
+
+    <fragment
+        android:id="@+id/nav_booking_detail"
+        android:name="ca.friends.and.co.it.smartparking.BookingDetailFragment"
+        android:label="@string/booking_details"
+        tools:layout="@layout/fragment_booking_detail" />
+
+    <fragment
+        android:id="@+id/nav_support"
+        android:name="ca.friends.and.co.it.smartparking.SupportFragment"
+        android:label="@string/support"
+        tools:layout="@layout/fragment_support" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="ca.friends.and.co.it.smartparking.ShareFragment"
+        android:label="@string/share"
+        tools:layout="@layout/fragment_share" />
+
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="ca.friends.and.co.it.smartparking.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings" />
+
+
+</navigation>

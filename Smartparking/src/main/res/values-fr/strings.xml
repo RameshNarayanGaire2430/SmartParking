@@ -1,0 +1,75 @@
+<resources>
+    //Ramesh Narayan Gaire N01452430, ONA
+    //Roshan Shrestha N01457532, ONA
+    // Rushi Bhandari N01464259, ONA
+    // Komal Bamotra N01426087,ONA
+
+    <string name="app_name">Smart Parking</string>
+    <string name="nav_open">Ouvrir le tiroir de navigation</string>
+    <string name="nav_close">Fermer le tiroir de navigation</string>
+    <string name="nav_header_title">Smart Parking</string>
+    <string name="nav_header_subtitle">friendsandco@smartparking.com</string>
+    <string name="nav_header_desc">En-tête de navigation</string>
+    <string name="action_settings">Paramètres</string>
+
+    <string name="menu_home">Accueil</string>
+    <string name="menu_gallery">Galerie</string>
+    <string name="menu_slideshow">Diaporama</string>
+    <string name="message">Voulez-vous y retourner?</string>
+    <string name="alert_title">Vraiment sortir?</string>
+    <string name="alert_message">Êtes-vous sûr de vouloir quitter?</string>
+
+    <string name="home">Home</string>
+    <string name="booking">Réservation</string>
+    <string name="booking_details">Les détails de réservation</string>
+    <string name="support">Soutien</string>
+    <string name="share">Partager</string>
+    <string name="settings">Réglages</string>
+    <string name="logout">Se déconnecter</string>
+    <string name="home_title">Home</string>
+    <string name="booking_title">Réservation</string>
+    <string name="booking_details_title">Les détails de réservation</string>
+    <string name="communication_title">Communication</string>
+    <string name="support_title">Soutien</string>
+    <string name="share_title">Partager</string>
+    <string name="others_title">Les autres</string>
+    <string name="settings_title">Réglages</string>
+    <string name="logout_title">Se déconnecter</string>
+    <string name="about">sur</string>
+    <string name="setting">Paramètre</string>
+    <string name="contact">Contactez</string>
+    <string name="help">aider</string>
+
+    <string name="booking_form">FORMULAIRE DE RESERVATION</string>
+    <string name="full_name">Nom et prénom</string>
+    <string name="email_address">Adresse e-mail</string>
+    <string name="contact_number">Numéro de contact</string>
+    <string name="date">Date</string>
+    <string name="book">LIVRE</string>
+    <string name="name">Nom:</string>
+    <string name="book_date">Date:</string>
+    <string name="duration">Durée:</string>
+    <string name="email">E-mail:</string>
+    <string name="booking_detail">LES DÉTAILS DE RÉSERVATION</string>
+    <string name="book_space">LIVRE</string>
+    <string name="share_info">PARTAGER</string>
+    <string name="support_center">SUPPORT</string>
+    <string name="feedback">RETOUR D"'"INFORMATION</string>
+    <string name="dashboard">TABLEAU DE BORD</string>
+    <string name="choose_the_way_to_share">CHOISISSEZ LA FAÇON DE PARTAGER</string>
+    <string name="call_us">Appelez-nous</string>
+    <string name="get_in_touch">ENTRER EN CONTACT</string>
+    <string name="live_chat">Chat en direct</string>
+    <string name="e_mail">E-mail</string>
+    <string name="item_home">Home</string>
+    <string name="item_booking">Réservation</string>
+    <string name="item_booking_details">Les détails de réservation</string>
+    <string name="item_communication">Communication</string>
+    <string name="item_support">Soutien</string>
+    <string name="item_share">Partager</string>
+    <string name="item_others">Les autres</string>
+    <string name="item_settings">Réglages</string>
+    <string name="item_logout">Se déconnecter</string>
+
+
+</resources>

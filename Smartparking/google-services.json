@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "103610884463",
+    "project_id": "smart-parking-869f0",
+    "storage_bucket": "smart-parking-869f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103610884463:android:3532bfc0b048190cf7c89a",
+        "android_client_info": {
+          "package_name": "ca.friends.and.co.it.smartparking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "103610884463-v6mf09hekbahnesh6vdkqnc65q9phe71.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_DVuzOhL2RLdb7F-cAqlD9MqF8JA2GgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "103610884463-v6mf09hekbahnesh6vdkqnc65q9phe71.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
