@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     CheckBox remember;
 
+
     FirebaseAuth mAuth;
 
     @Override
