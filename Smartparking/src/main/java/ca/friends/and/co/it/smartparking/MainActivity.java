@@ -97,8 +97,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //Opening booking fragment
             case R.id.nav_booking:
                 //  Toast.makeText(getApplicationContext(), "Booking", Toast.LENGTH_SHORT).show();
-                if (this.fragmentBooking == null) this.fragmentBooking = BookingFragment.newInstance();
+               /* if (this.fragmentBooking == null) this.fragmentBooking = BookingFragment.newInstance();
                 this.startTransactionFragment(this.fragmentBooking);
+                */
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new BookingFragment()).commit();
+
                 break;
 
             //Opening booking detail fragment

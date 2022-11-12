@@ -27,7 +27,7 @@
         android:layout_width="87dp"
         android:layout_height="47dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="52dp"
         android:text="@string/name"
         android:textSize="25dp"
         android:textStyle="bold|italic"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/date"
         android:layout_width="87dp"
         android:layout_height="47dp"
         android:layout_marginStart="24dp"
@@ -47,9 +47,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="123dp"
-        android:layout_height="48dp"
+        android:id="@+id/duration"
+        android:layout_width="100dp"
+        android:layout_height="47dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="228dp"
         android:text="@string/duration"
@@ -59,12 +59,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/contactNo"
         android:layout_width="87dp"
         android:layout_height="47dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="116dp"
-        android:text="@string/email"
+        android:text="@string/contact"
         android:textSize="25dp"
         android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,58 +83,60 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/recieving_full_name"
         android:layout_width="163dp"
         android:layout_height="47dp"
-        android:layout_marginStart="127dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="52dp"
+        android:text=""
         android:background="@drawable/rectangleshape"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="29dp"
         android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/recieving_duration"
         android:layout_width="163dp"
         android:layout_height="47dp"
         android:layout_marginStart="127dp"
         android:layout_marginTop="228dp"
+        android:text=""
         android:background="@drawable/rectangleshape"
-
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="29dp"
         android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/recieving_date"
         android:layout_width="163dp"
         android:layout_height="47dp"
         android:layout_marginStart="127dp"
         android:layout_marginTop="172dp"
+        android:text=""
         android:background="@drawable/rectangleshape"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="29dp"
         android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/recieving_contact"
         android:layout_width="163dp"
         android:layout_height="47dp"
         android:layout_marginStart="127dp"
         android:layout_marginTop="116dp"
+        android:text=""
         android:background="@drawable/rectangleshape"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="29dp"
         android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
