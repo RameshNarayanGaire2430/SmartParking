@@ -1,5 +1,7 @@
 package ca.friends.and.co.it.smartparking;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,18 +87,28 @@ public class ShareFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Gmail", Toast.LENGTH_SHORT).show();
-                 }
+                gotoUrl("https://mail.google.com/");
+
+
+            }
         });
         imageView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Viber", Toast.LENGTH_SHORT).show();
+
+                gotoUrl("https://www.viber.com/");
             }
         });
         imageView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Message", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, "");
+                startActivity(intent);
+
             }
         });
 
@@ -104,6 +116,8 @@ public class ShareFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Instagram", Toast.LENGTH_SHORT).show();
+
+                gotoUrl("https://www.instagram.com/");
             }
         });
 
@@ -111,6 +125,8 @@ public class ShareFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Messanger", Toast.LENGTH_SHORT).show();
+                gotoUrl("https://www.messenger.com/");
+
             }
         });
 
@@ -119,10 +135,17 @@ public class ShareFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Teams", Toast.LENGTH_SHORT).show();
+
+                gotoUrl("https://teams.microsoft.com/");
             }
         });
 
 
         return view;
+    }
+
+    private void gotoUrl(String s) {
+        Uri uri = Uri.parse(s);
+        startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 }
