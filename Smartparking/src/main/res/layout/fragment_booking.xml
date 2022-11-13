@@ -53,6 +53,8 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="424dp"
         android:background="@drawable/rectangleshape"
+        android:inputType="phone"
+        android:digits="0123456789+"
         android:hint="@string/contact_number"
         android:textColorHint="@color/black"
         android:textColor="@color/black"
