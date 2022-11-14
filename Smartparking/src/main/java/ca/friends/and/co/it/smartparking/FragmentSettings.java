@@ -6,6 +6,11 @@ package ca.friends.and.co.it.smartparking;
 // Komal Bamotra N01426087,ONA
 
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +18,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -91,9 +99,43 @@ public class FragmentSettings extends Fragment {
             }
         });
 
+        enableNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(enableNotification.isChecked()){
+                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("NotificationEnable",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("Notify",true);
+                    createNotification();
+                    Toast.makeText(getContext(), "Notification Enabled!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
 
 
 
         return view;
    }
+   public void createNotification(){
+       if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+           NotificationChannel channel = new NotificationChannel("NotificationEnabled","Notify", NotificationManager.IMPORTANCE_HIGH);
+           channel.setDescription("You have now enrolled in notification you will receive further notifications from Smart Parking application");
+           NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
+           notificationManager.createNotificationChannel(channel);
+       }
+       sendNotificationProcess();
+   }
+
+    public void sendNotificationProcess(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(),"NotificationEnabled");
+        builder.setContentTitle("Smart Parking Notification enabled!")
+                .setContentText("You have now enrolled in notification you will receive further notifications from Smart Parking application")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_HIGH);
+        NotificationManagerCompat mangerCompat = NotificationManagerCompat.from(getContext());
+        mangerCompat.notify(1,builder.build());
+    }
 }

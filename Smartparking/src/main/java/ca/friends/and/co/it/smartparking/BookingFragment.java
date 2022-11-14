@@ -83,7 +83,7 @@ public class BookingFragment extends Fragment {
 
         // Inflate the layout for this fragment
         view =  inflater.inflate(R.layout.fragment_booking, container, false);
-        Button button = view.findViewById(R.id.button);
+        Button button = view.findViewById(R.id.book_button);
         EditText fullname = view.findViewById(R.id.full_name);
         EditText contact = view.findViewById(R.id.contact_number);
         EditText date = view.findViewById(R.id.date);

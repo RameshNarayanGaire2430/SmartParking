@@ -11,6 +11,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/bookingFragment"
     tools:context=".BookingFragment">
 
 
@@ -98,7 +99,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/book_button"
         android:layout_width="158dp"
         android:layout_height="57dp"
         android:layout_marginStart="128dp"
