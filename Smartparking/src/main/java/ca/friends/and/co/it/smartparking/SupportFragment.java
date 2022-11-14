@@ -93,7 +93,9 @@ public class SupportFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Opening Live Chat", Toast.LENGTH_SHORT).show();
-                }
+                gotoUrl("https://support.google.com/chatsupport/?hl=en");
+
+            }
         });
 
         callImageBtn.setOnClickListener(new View.OnClickListener() {
@@ -108,10 +110,16 @@ public class SupportFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Opening Email", Toast.LENGTH_SHORT).show();
-               }
+                gotoUrl("https://mail.google.com/mail/u/0/#inbox?compose=new");
+            }
         });
 
         return view;
+    }
+
+    private void gotoUrl(String s) {
+        Uri uri = Uri.parse(s);
+        startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 
     private void makePhoneCall() {
