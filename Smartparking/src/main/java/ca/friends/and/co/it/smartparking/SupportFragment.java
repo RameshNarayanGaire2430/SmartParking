@@ -122,6 +122,9 @@ public class SupportFragment extends Fragment {
         startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 
+
+
+
     private void makePhoneCall() {
         String number = "4379875581";
         if (ContextCompat.checkSelfPermission(getContext(),
