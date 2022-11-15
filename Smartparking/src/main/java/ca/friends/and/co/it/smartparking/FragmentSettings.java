@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDelegate;
@@ -31,7 +32,7 @@ import androidx.fragment.app.Fragment;
  * create an instance of this fragment.
  */
 public class FragmentSettings extends Fragment {
-    private CheckBox enableNightMode;
+    private Switch enableNightMode;
     private CheckBox enableScreenOrientation;
     private CheckBox enableNotification;
     private Button changePassword;
