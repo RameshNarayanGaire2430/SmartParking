@@ -24,4 +24,21 @@
 ##  Design and layout of all the screens on the application
 ##  Register and login page for users
 ##  Settings options to change mode of the application
-## creation of database in cloud
+## creation of database in cloud 
+
+
+# We updated the application in many ways
+
+## Login and registration screens were created. Also, remember me option added for the direct login.
+
+## Data is linked to the firebase
+
+## menu toolbar is designed to change the settings and get help option is kept for users
+## enable/disable notification, dark mode and orientation features are added in the settings screen.
+
+## Feedback screen designed for the users to give ratings and review.
+
+## Support screen is created to get help 
+
+## share app option is designed to share the application.
+
