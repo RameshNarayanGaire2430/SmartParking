@@ -72,6 +72,11 @@
     <string name="item_logout">Logout</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_us">About Us</string>
+    <string name="first_sentence">The sensors are well known for their accuracy of detecting a vehicle presence The sensor located at the entrance and exit of a parking area will count with high accuracy the entrance and exit of the vehicles, taking into consideration even two cars stopping very close to each other.</string>
+    <string name="second_sentence">The total cost of solution considering the initial purchasing and installation cost, you will have low maintenance cost and no need of replacing batteries.</string>
+    <string name="third_sentence">The sensors will just count the vehicles without recording any data. The system is not based on cameras, but again on sensors and eventually a display for counting the cars. Therefore, the privacy is totally granted.</string>
+    <string name="title_info">Wanna know how we work??</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 

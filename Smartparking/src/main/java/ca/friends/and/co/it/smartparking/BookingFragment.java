@@ -5,8 +5,8 @@ package ca.friends.and.co.it.smartparking;
 // Rushi Bhandari N01464259, ONA
 // Komal Bamotra N01426087,ONA
 
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,9 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -37,6 +36,7 @@ public class BookingFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     View view;
+    Bundle resultBundle = new Bundle();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -156,22 +156,76 @@ public class BookingFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Bundle result = new Bundle();
-                result.putString ("fullname", fullname.getText().toString());
-                result.putString ("contact", contact.getText().toString());
-                result.putString ("date", date.getText().toString());
-                result.putString ("duration", duration.getText().toString());
 
+                resultBundle.putString ("fullname", fullname.getText().toString());
+                resultBundle.putString ("contact", contact.getText().toString());
+                resultBundle.putString ("date", date.getText().toString());
+                resultBundle.putString ("duration", duration.getText().toString());
+                AsyncTaskRunner runner = new AsyncTaskRunner();
+                String sleepTime = "3";
+                runner.execute(sleepTime);
 
-                BookingDetailFragment bookingDetailFragment = new BookingDetailFragment();
-                bookingDetailFragment.setArguments(result);
-
-
-                getFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, bookingDetailFragment).commit();
 /*
                 editText.setText("");*/
             }
         });
         return view;
+    }
+
+    private class AsyncTaskRunner extends AsyncTask<String, String, String> {
+
+        private String resp;
+        ProgressDialog progressDialog;
+
+
+        @Override
+        protected String doInBackground(String... params) {
+            publishProgress("Sleeping..."); // Calls onProgressUpdate()
+            try {
+                int time = Integer.parseInt(params[0])*1000;
+
+                Thread.sleep(time);
+                resp = "Slept for " + params[0] + " seconds";
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                resp = e.getMessage();
+            } catch (Exception e) {
+                e.printStackTrace();
+                resp = e.getMessage();
+            }
+            return resp;
+        }
+
+
+        @Override
+        protected void onPostExecute(String result) {
+            // execution of result of Long time consuming operation
+            progressDialog.dismiss();
+
+
+            BookingDetailFragment bookingDetailFragment = new BookingDetailFragment();
+            bookingDetailFragment.setArguments(resultBundle);
+
+
+            getFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, bookingDetailFragment).commit();
+            Toast.makeText(getContext(), "Booking Confirmed!", Toast.LENGTH_SHORT).show();
+
+        }
+
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog = ProgressDialog.show(getContext(),
+                    "Confirming...",
+                    "Wait for few seconds");
+        }
+
+
+        @Override
+        protected void onProgressUpdate(String... text) {
+
+
+        }
     }
 }
