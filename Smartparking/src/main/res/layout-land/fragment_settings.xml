@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+   //Ramesh Narayan Gaire N01452430, ONA
+    //Roshan Shrestha N01457532, ONA
+    // Rushi Bhandari N01464259, ONA
+    // Komal Bamotra N01426087,ONA
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentSettings">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="195dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="52dp"
+        android:text="Enable night Mode"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/night_mode_switch"
+        android:layout_width="134dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="235dp"
+        android:layout_marginTop="40dp"
+        android:text="On"
+        app:layout_constraintStart_toEndOf="@+id/textView33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/orientation_title"
+        android:layout_width="195dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="500dp"
+        android:layout_marginTop="28dp"
+        android:text="Screen Orientation"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/orientation"
+        android:layout_width="119dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="500dp"
+        android:layout_marginTop="80dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/potrait"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Potrait" />
+
+        <RadioButton
+            android:id="@+id/landscape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Landscape" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/notification_title"
+        android:layout_width="195dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="148dp"
+        android:text="Enable Notification"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/notification_switch"
+        android:layout_width="129dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="132dp"
+        android:text="On/Off"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/settings_change_password_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="232dp"
+        android:text="Change Password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/give_feedback_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="400dp"
+        android:layout_marginTop="232dp"
+        android:text="Give us Feedback!"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

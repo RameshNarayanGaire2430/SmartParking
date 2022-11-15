@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+   //Ramesh Narayan Gaire N01452430, ONA
+    //Roshan Shrestha N01457532, ONA
+    // Rushi Bhandari N01464259, ONA
+    // Komal Bamotra N01426087,ONA
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookingDetailFragment">
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="334dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="366dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/booking_detail_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="87dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/name"
+        android:textSize="25dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="87dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="172dp"
+        android:text="@string/book_date"
+        android:textSize="25dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="100dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="228dp"
+        android:text="@string/duration"
+        android:textSize="25dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/contactNo"
+        android:layout_width="87dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="116dp"
+        android:text="@string/contact"
+        android:textSize="25dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="264dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/booking_detail"
+        android:textSize="29dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recieving_full_name"
+        android:layout_width="163dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/rectangleshape"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="29dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recieving_duration"
+        android:layout_width="163dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="127dp"
+        android:layout_marginTop="228dp"
+        android:background="@drawable/rectangleshape"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="29dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recieving_date"
+        android:layout_width="163dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="127dp"
+        android:layout_marginTop="172dp"
+        android:background="@drawable/rectangleshape"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="29dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recieving_contact"
+        android:layout_width="163dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="127dp"
+        android:layout_marginTop="116dp"
+        android:background="@drawable/rectangleshape"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="29dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+

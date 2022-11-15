@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+   //Ramesh Narayan Gaire N01452430, ONA
+    //Roshan Shrestha N01457532, ONA
+    // Rushi Bhandari N01464259, ONA
+    // Komal Bamotra N01426087,ONA
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/bookingFragment"
+    tools:context=".BookingFragment">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="281dp"
+        android:layout_height="158dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/parking_booth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="236dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:text="@string/booking_form"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="29dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/full_name"
+        android:layout_width="327dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="352dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rectangleshape"
+        android:hint="@string/full_name"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/contact_number"
+        android:layout_width="327dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="352dp"
+        android:layout_marginTop="84dp"
+        android:background="@drawable/rectangleshape"
+        android:digits="0123456789+"
+        android:hint="@string/contact_number"
+        android:inputType="phone"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="327dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="352dp"
+        android:layout_marginTop="152dp"
+        android:background="@drawable/rectangleshape"
+        android:hint="@string/date"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/duration"
+        android:layout_width="327dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="352dp"
+        android:layout_marginTop="228dp"
+        android:background="@drawable/rectangleshape"
+        android:hint="@string/duration"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/book_button"
+        android:layout_width="158dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="228dp"
+        android:text="@string/book"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

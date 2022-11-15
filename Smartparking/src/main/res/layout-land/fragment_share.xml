@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+   //Ramesh Narayan Gaire N01452430, ONA
+    //Roshan Shrestha N01457532, ONA
+    // Rushi Bhandari N01464259, ONA
+    // Komal Bamotra N01426087,ONA
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ShareFragment">
+
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="393dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/choose_the_way_to_share"
+        android:textSize="29dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/gmail_imagebtn"
+        android:layout_width="98dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="416dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/gmail_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/viber_imagebtn"
+        android:layout_width="74dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="532dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/viber_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/message_imagebtn"
+        android:layout_width="88dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="624dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/message_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/instagram_imagebtn"
+        android:layout_width="77dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="416dp"
+        android:layout_marginTop="152dp"
+        android:src="@drawable/instagram_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/messanger_imagebtn"
+        android:layout_width="75dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="528dp"
+        android:layout_marginTop="156dp"
+        android:src="@drawable/messenger_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/teams_imagebtn"
+        android:layout_width="78dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="636dp"
+        android:layout_marginTop="152dp"
+        android:src="@drawable/teams_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="77dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="424dp"
+        android:layout_marginTop="92dp"
+        android:text="Gmail"
+        android:textSize="25dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="125dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="512dp"
+        android:layout_marginTop="236dp"
+        android:text="Messenger"
+        android:textSize="25dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="80dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="652dp"
+        android:layout_marginTop="236dp"
+        android:text="Teams"
+        android:textSize="25dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="112dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="392dp"
+        android:layout_marginTop="236dp"
+        android:text="Instagram"
+        android:textSize="25dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="106dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="608dp"
+        android:layout_marginTop="92dp"
+        android:text="Message"
+        android:textSize="25dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="62dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="532dp"
+        android:layout_marginTop="92dp"
+        android:text="Viber"
+        android:textSize="25dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="287dp"
+        android:layout_height="177dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="96dp"
+        android:src="@drawable/sharing_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
