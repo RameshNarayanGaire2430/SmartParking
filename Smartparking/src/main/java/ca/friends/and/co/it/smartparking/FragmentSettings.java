@@ -1,6 +1,14 @@
 package ca.friends.and.co.it.smartparking;
 
 
+//Ramesh Narayan Gaire N01452430, ONA
+//Roshan Shrestha N01457532, ONA
+// Rushi Bhandari N01464259, ONA
+// Komal Bamotra N01426087,ONA
+
+
+// single responsibility principle used
+// This java class is only related to changing the setting
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;

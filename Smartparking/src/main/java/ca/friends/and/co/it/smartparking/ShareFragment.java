@@ -5,6 +5,11 @@ package ca.friends.and.co.it.smartparking;
 // Rushi Bhandari N01464259, ONA
 // Komal Bamotra N01426087,ONA
 
+
+
+// single responsibility principle used
+// This java class is only related to sharing
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -149,6 +154,9 @@ public class ShareFragment extends Fragment {
         return view;
     }
 
+
+
+    // Dont Repeat yourself principle is used here by using gotoUrl method in differnt places
     private void gotoUrl(String s) {
         Uri uri = Uri.parse(s);
         startActivity(new Intent(Intent.ACTION_VIEW, uri));

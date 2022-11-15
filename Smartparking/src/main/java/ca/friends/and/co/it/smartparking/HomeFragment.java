@@ -5,6 +5,8 @@ package ca.friends.and.co.it.smartparking;
 // Rushi Bhandari N01464259, ONA
 // Komal Bamotra N01426087,ONA
 
+
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;

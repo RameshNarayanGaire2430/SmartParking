@@ -5,6 +5,10 @@ package ca.friends.and.co.it.smartparking;
 // Rushi Bhandari N01464259, ONA
 // Komal Bamotra N01426087,ONA
 
+
+// single responsibility principle used
+// This java class is only related to booking
+
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;

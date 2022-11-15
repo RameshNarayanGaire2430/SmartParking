@@ -163,6 +163,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+
+    // keep it simple and stupid used
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 

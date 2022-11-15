@@ -5,6 +5,10 @@ package ca.friends.and.co.it.smartparking;
 // Rushi Bhandari N01464259, ONA
 // Komal Bamotra N01426087,ONA
 
+
+// single responsibility principle used
+// This java class is only related to giving the feedback
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,8 +24,6 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.sql.DatabaseMetaData;
 
 /**
  * A simple {@link Fragment} subclass.

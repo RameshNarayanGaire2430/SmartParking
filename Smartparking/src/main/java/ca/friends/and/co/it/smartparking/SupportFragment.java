@@ -8,6 +8,7 @@ package ca.friends.and.co.it.smartparking;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -83,7 +85,7 @@ public class SupportFragment extends Fragment {
         Snackbar.make(v, "Support Screen", Snackbar.LENGTH_LONG).show();
 
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_support, container, false);
+        View view = inflater.inflate(R.layout.fragment_support, container, false);
         liveChatImageBtn = view.findViewById(R.id.imageView10);
         callImageBtn = view.findViewById(R.id.imageView8);
         EmailImageBtn = view.findViewById(R.id.imageView11);
@@ -123,30 +125,45 @@ public class SupportFragment extends Fragment {
     }
 
 
-
-
     private void makePhoneCall() {
         String number = "4379875581";
         if (ContextCompat.checkSelfPermission(getContext(),
-                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(getActivity(), new String[] {
-                    Manifest.permission.CALL_PHONE}
-            ,REQUEST_CALL);
+                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{
+                            Manifest.permission.CALL_PHONE}
+                    , REQUEST_CALL);
         } else {
             String dial = "tel:" + number;
             startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
         }
     }
 
+
+    // Design pattern used (Builder pattern)
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_CALL) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                makePhoneCall();
-            }else {
-                Toast.makeText(getContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
+        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CALL_PHONE)) {
 
-            }
+            new AlertDialog.Builder(getContext())
+                    .setTitle("Permission needed !!")
+                    .setMessage("This permission needed to access your phone")
+                    .setPositiveButton("Allow", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(getActivity(),
+                                    new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+
+                        }
+                    })
+                    .setNegativeButton("Deny", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+        } else {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
         }
     }
 }

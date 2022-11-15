@@ -5,6 +5,10 @@ package ca.friends.and.co.it.smartparking;
 // Rushi Bhandari N01464259, ONA
 // Komal Bamotra N01426087,ONA
 
+
+// single responsibility principle used
+// This java class is only related to displaying the booking detail
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
