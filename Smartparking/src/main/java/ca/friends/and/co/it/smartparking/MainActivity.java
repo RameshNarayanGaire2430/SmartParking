@@ -134,10 +134,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //Opening settings fragment
             case R.id.nav_settings:
                 // Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, SettingsActivity.class);
-                startActivity(i);
-                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-
+                if (this.fragmentSettings == null) this.fragmentSettings = FragmentSettings.newInstance();
+                this.startTransactionFragment(this.fragmentSettings);
                 break;
 
             //Opening logout fragment
@@ -197,8 +195,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.setting:
-                Intent i = new Intent(this, SettingsActivity.class);
-                startActivity(i);
+
+                if (this.fragmentSettings == null) this.fragmentSettings = FragmentSettings.newInstance();
+                this.startTransactionFragment(this.fragmentSettings);
 
                 Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
                 break;
