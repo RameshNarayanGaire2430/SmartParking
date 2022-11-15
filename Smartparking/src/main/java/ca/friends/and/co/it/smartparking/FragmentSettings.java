@@ -82,6 +82,14 @@ public class FragmentSettings extends Fragment {
         landscape = view.findViewById(R.id.landscape);
         feedbackButton = view.findViewById(R.id.give_feedback_button);
         changePassword = view.findViewById(R.id.settings_change_password_button);
+
+        feedbackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new FeedbackFragment()).addToBackStack(null).commit() ;
+            }
+        });
+
         enableNightMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
