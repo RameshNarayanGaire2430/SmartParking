@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="72dp"
             android:layout_marginTop="100dp"
+            android:numStars="5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,7 +35,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/textView25"
+        android:id="@+id/userReviewText"
         android:layout_width="378dp"
         android:layout_height="98dp"
         android:layout_marginStart="6dp"
@@ -44,6 +45,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/sendFeedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="350dp"
+        android:text="Send" />
 
 
 </FrameLayout>

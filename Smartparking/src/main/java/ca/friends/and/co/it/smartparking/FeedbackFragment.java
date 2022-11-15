@@ -9,10 +9,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.sql.DatabaseMetaData;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +29,11 @@ import com.google.android.material.snackbar.Snackbar;
  * create an instance of this fragment.
  */
 public class FeedbackFragment extends Fragment {
+    EditText reviewEditText;
+    String reveiewData;
+    RatingBar feedbackStars;
+    Button sendButton;
+    float ratings;
 
 
     public FeedbackFragment() {
@@ -57,6 +71,32 @@ public class FeedbackFragment extends Fragment {
         View view = getActivity().findViewById(android.R.id.content);
         Snackbar.make(view, "Feedback Screen", Snackbar.LENGTH_LONG).show();
 
+
+
+
         return inflater.inflate(R.layout.fragment_feedback, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        reviewEditText = view.findViewById(R.id.userReviewText);
+        sendButton = view.findViewById(R.id.sendFeedback);
+        feedbackStars = view.findViewById(R.id.ratingBar);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Feedback");
+
+
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reveiewData = reviewEditText.getText().toString();
+                ratings = feedbackStars.getRating();
+                reference.child("Customer Review").setValue(reveiewData);
+                reference.child("Rating").setValue(ratings);
+
+
+            }
+        });
     }
 }
