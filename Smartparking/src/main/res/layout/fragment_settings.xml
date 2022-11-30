@@ -22,7 +22,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="52dp"
-        android:text="Enable night Mode"
+        android:text="@string/enable_night_mode"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,10 +33,11 @@
         android:layout_height="41dp"
         android:layout_marginStart="235dp"
         android:layout_marginTop="44dp"
-        android:text="On"
+        android:text="@string/on"
         app:layout_constraintStart_toEndOf="@+id/textView33"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <TextView
         android:id="@+id/orientation_title"
@@ -44,7 +45,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="131dp"
-        android:text="Screen Orientation"
+        android:text="@string/screen_orientation"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,13 +64,13 @@
             android:id="@+id/potrait"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Potrait" />
+            android:text="@string/potrait" />
 
         <RadioButton
             android:id="@+id/landscape"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Landscape" />
+            android:text="@string/landscape" />
     </RadioGroup>
 
     <TextView
@@ -78,7 +79,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="232dp"
-        android:text="Enable Notification"
+        android:text="@string/enable_notification"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -89,7 +90,7 @@
         android:layout_height="46dp"
         android:layout_marginStart="235dp"
         android:layout_marginTop="220dp"
-        android:text="On/Off"
+        android:text="@string/on_off"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -99,7 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="320dp"
-        android:text="Change Password"
+        android:text="@string/change_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -109,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
         android:layout_marginTop="416dp"
-        android:text="Give us Feedback!"
+        android:text="@string/give_us_feedback"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

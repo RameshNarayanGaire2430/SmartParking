@@ -77,6 +77,40 @@
     <string name="second_sentence">The total cost of solution considering the initial purchasing and installation cost, you will have low maintenance cost and no need of replacing batteries.</string>
     <string name="third_sentence">The sensors will just count the vehicles without recording any data. The system is not based on cameras, but again on sensors and eventually a display for counting the cars. Therefore, the privacy is totally granted.</string>
     <string name="title_info">Wanna know how we work??</string>
+    <string name="login">Login</string>
+    <string name="Email">Email</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="Login">Login</string>
+    <string name="not_registered_yet">Not registered yet</string>
+    <string name="register_here">Register here</string>
+    <string name="or_sign_in_with">or sign in with</string>
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="email1">Email</string>
+    <string name="password1">Password</string>
+    <string name="confim_password">Confim Password</string>
+    <string name="register1">Register</string>
+    <string name="already_registered">Already registered</string>
+    <string name="login_here">Login here</string>
+    <string name="rate_and_review">Rate and Review</string>
+    <string name="what_do_you_think_about_this_appication">What do you think about this appication?</string>
+    <string name="send">Send</string>
+    <string name="enable_night_mode">Enable night Mode</string>
+    <string name="on">On</string>
+    <string name="screen_orientation">Screen Orientation</string>
+    <string name="potrait">Potrait</string>
+    <string name="landscape">Landscape</string>
+    <string name="enable_notification">Enable Notification</string>
+    <string name="on_off">On/Off</string>
+    <string name="change_password">Change Password</string>
+    <string name="give_us_feedback">Give us Feedback!</string>
+    <string name="gmail">Gmail</string>
+    <string name="teams">Teams</string>
+    <string name="messenger">Messenger</string>
+    <string name="instagram">Instagram</string>
+    <string name="message1">Message</string>
+    <string name="viber">Viber</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 
