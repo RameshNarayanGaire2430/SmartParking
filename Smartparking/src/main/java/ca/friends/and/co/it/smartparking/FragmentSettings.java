@@ -122,6 +122,7 @@ public class FragmentSettings extends Fragment {
                 final EditText resetPassword = new EditText(view.getContext());
                 final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(view.getContext());
                 passwordResetDialog.setTitle("Reset Password");
+                passwordResetDialog.setIcon(R.drawable.ic_baseline_password_24);
                 passwordResetDialog.setMessage("Enter New Password");
                 passwordResetDialog.setView(resetPassword);
 
