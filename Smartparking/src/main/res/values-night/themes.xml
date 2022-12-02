@@ -28,6 +28,11 @@
 
     </style>
 
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#D3D3D3</item>
+        <item name="colorControlActivated">#FFDF00</item>
+    </style>
+
     <style name="Theme.App" parent="Theme.MaterialComponents.DayNight">
         <item name="android:windowTranslucentStatus">true</item>
     </style>
