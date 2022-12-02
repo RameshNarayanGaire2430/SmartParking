@@ -21,7 +21,8 @@
             android:layout_marginTop="100dp"
             android:numStars="5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:theme="@style/RatingBar"/>
 
         <TextView
             android:id="@+id/textView22"
