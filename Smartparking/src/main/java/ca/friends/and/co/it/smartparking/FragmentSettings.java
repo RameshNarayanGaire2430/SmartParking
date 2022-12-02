@@ -10,9 +10,11 @@ package ca.friends.and.co.it.smartparking;
 // single responsibility principle used
 // This java class is only related to changing the setting
 
+import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
@@ -24,15 +26,22 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,6 +60,10 @@ public class FragmentSettings extends Fragment {
     private CheckBox enableNotification;
     private Button changePassword;
     private Button feedbackButton;
+    String userId;
+    FirebaseUser user;
+    FirebaseAuth mAuth;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     public FragmentSettings() {
@@ -90,11 +103,56 @@ public class FragmentSettings extends Fragment {
         landscape = view.findViewById(R.id.landscape);
         feedbackButton = view.findViewById(R.id.give_feedback_button);
         changePassword = view.findViewById(R.id.settings_change_password_button);
+        mAuth = FirebaseAuth.getInstance();
+
+        userId = mAuth.getCurrentUser().getUid();
+        user = mAuth.getCurrentUser();
 
         feedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new FeedbackFragment()).addToBackStack(null).commit() ;
+            }
+        });
+
+
+        changePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final EditText resetPassword = new EditText(view.getContext());
+                final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(view.getContext());
+                passwordResetDialog.setTitle("Reset Password");
+                passwordResetDialog.setMessage("Enter New Password");
+                passwordResetDialog.setView(resetPassword);
+
+                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String newPassword = resetPassword.getText().toString();
+                        user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(getContext(), "Password reset sucessfully", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getContext(), "Password reset failed!!", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
+                    }
+                });
+
+                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+                passwordResetDialog.create().show();
             }
         });
 
