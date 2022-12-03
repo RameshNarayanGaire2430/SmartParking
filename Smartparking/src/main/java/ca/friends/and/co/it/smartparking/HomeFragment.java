@@ -14,9 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 /**
@@ -29,6 +31,7 @@ public class HomeFragment extends Fragment {
     ImageView imageView2;
     ImageView imageView3;
     ImageView imageView4;
+    FloatingActionButton button;
 
     private Fragment fragmentBooking;
     Handler handler = new Handler();
@@ -84,6 +87,7 @@ public class HomeFragment extends Fragment {
         imageView2 = view.findViewById(R.id.support_imagebtn);
         imageView3 = view.findViewById(R.id.share_imagebtn);
         imageView4 = view.findViewById(R.id.feedback_imagebtn);
+        button=view.findViewById(R.id.fab_btn);
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +115,13 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 //Toast.makeText(getContext(), "You are entering feedback screen", Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new FeedbackFragment()).commit();
+            }
+        });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Fabbutton", Toast.LENGTH_SHORT).show();
+
             }
         });
 
