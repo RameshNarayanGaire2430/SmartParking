@@ -37,11 +37,44 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/userReviewText"
+        android:id="@+id/userReviewName"
         android:layout_width="378dp"
         android:layout_height="98dp"
         android:layout_marginStart="6dp"
         android:layout_marginTop="200dp"
+        android:hint="@string/full_name"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/userReviewPhone"
+        android:layout_width="378dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="300dp"
+        android:hint="Phone number"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/userReviewEmail"
+        android:layout_width="378dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="400dp"
+        android:hint="@string/e_mail"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/userReviewText"
+        android:layout_width="378dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="500dp"
         android:hint="@string/what_do_you_think_about_this_appication"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,10 +82,10 @@
 
     <Button
         android:id="@+id/sendFeedback"
-        android:layout_width="wrap_content"
+        android:layout_width="272dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="650dp"
         android:text="@string/send" />
 
 
