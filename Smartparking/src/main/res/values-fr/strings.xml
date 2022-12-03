@@ -11,7 +11,7 @@
     <string name="nav_header_subtitle">friendsandco@smartparking.com</string>
     <string name="nav_header_desc">En-tête de navigation</string>
     <string name="action_settings">Paramètres</string>
-
+    <string name="booking_duration">Duration</string>
     <string name="menu_home">Accueil</string>
     <string name="menu_gallery">Galerie</string>
     <string name="menu_slideshow">Diaporama</string>

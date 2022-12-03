@@ -49,6 +49,7 @@
     <string name="name">Name:</string>
     <string name="book_date">Date:</string>
     <string name="duration">Duration:</string>
+    <string name="booking_duration">Duration</string>
     <string name="email">Email:</string>
     <string name="booking_detail">BOOKING DETAILS</string>
     <string name="book_space">BOOK</string>
