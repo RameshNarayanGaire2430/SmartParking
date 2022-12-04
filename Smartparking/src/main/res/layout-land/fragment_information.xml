@@ -28,8 +28,8 @@
 
     <ImageView
         android:id="@+id/imageView20"
-        android:layout_width="221dp"
-        android:layout_height="123dp"
+        android:layout_width="227dp"
+        android:layout_height="112dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="56dp"
         android:src="@drawable/car_parking_info"
@@ -55,7 +55,7 @@ taking into consideration even two cars stopping very close to each other.
         android:layout_width="720dp"
         android:layout_height="47dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="172dp"
         android:text="The total cost of solution considering the initial purchasing and installation cost,
 you will have low maintenance cost and no need of replacing batteries.
 "
@@ -65,10 +65,10 @@ you will have low maintenance cost and no need of replacing batteries.
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="722dp"
-        android:layout_height="78dp"
+        android:layout_width="719dp"
+        android:layout_height="64dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="224dp"
         android:text="The sensors will just count the vehicles without recording any data. The system is not based on cameras, but again on sensors and eventually a display for counting the cars.
 Therefore, the privacy is totally granted."
         android:textSize="17dp"
