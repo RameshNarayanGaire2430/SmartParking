@@ -109,6 +109,7 @@
             android:textSize="20sp" />
 
         <ImageView
+            android:id="@+id/googleID"
             android:layout_width="112dp"
             android:layout_height="87dp"
             android:layout_marginHorizontal="120dp"
