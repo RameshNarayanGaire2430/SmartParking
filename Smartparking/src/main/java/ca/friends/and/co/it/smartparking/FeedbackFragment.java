@@ -31,7 +31,14 @@ import com.google.firebase.database.FirebaseDatabase;
  * create an instance of this fragment.
  */
 public class FeedbackFragment extends Fragment {
+    EditText reviewEditName;
+    EditText reviewEditPhone;
+    EditText reviewEditEmail;
     EditText reviewEditText;
+
+    String reveiewName;
+    String reveiewPhone;
+    String reveiewEmail;
     String reveiewData;
     RatingBar feedbackStars;
     Button sendButton;
@@ -74,15 +81,17 @@ public class FeedbackFragment extends Fragment {
         Snackbar.make(view, "Feedback Screen", Snackbar.LENGTH_LONG).show();
 
 
-
-
         return inflater.inflate(R.layout.fragment_feedback, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        reviewEditName = view.findViewById(R.id.userReviewName);
+        reviewEditPhone = view.findViewById(R.id.userReviewPhone);
+        reviewEditEmail = view.findViewById(R.id.userReviewEmail);
         reviewEditText = view.findViewById(R.id.userReviewText);
+
         sendButton = view.findViewById(R.id.sendFeedback);
         feedbackStars = view.findViewById(R.id.ratingBar);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Feedback");
@@ -92,10 +101,19 @@ public class FeedbackFragment extends Fragment {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                reveiewName = reviewEditName.getText().toString();
+                reveiewPhone = reviewEditPhone.getText().toString();
+                reveiewEmail = reviewEditEmail.getText().toString();
                 reveiewData = reviewEditText.getText().toString();
+
                 ratings = feedbackStars.getRating();
+
+                reference.child("Customer Name").setValue(reveiewName);
+                reference.child("Customer Phone").setValue(reveiewPhone);
+                reference.child("Customer Email").setValue(reveiewEmail);
                 reference.child("Customer Review").setValue(reveiewData);
-                reference.child("Rating").setValue(ratings);
+
+                reference.child("Ratings").setValue(ratings);
 
 
             }
