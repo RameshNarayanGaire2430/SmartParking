@@ -198,6 +198,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 this.startTransactionFragment(this.fragmentSupport);
                 break;
 
+            case R.id.collaborators:
+                Toast.makeText(this, "Collaborators", Toast.LENGTH_SHORT).show();
+                if (this.fragmentSupport == null) this.fragmentSupport = SupportFragment.newInstance();
+                this.startTransactionFragment(this.fragmentSupport);
+                break;
+
             case R.id.about:
                 Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
                 if (this.fragmentInformation == null) this.fragmentInformation = InformationFragment.newInstance();
@@ -205,10 +211,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.setting:
-
                 if (this.fragmentSettings == null) this.fragmentSettings = FragmentSettings.newInstance();
                 this.startTransactionFragment(this.fragmentSettings);
-
                 Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
                 break;
 
