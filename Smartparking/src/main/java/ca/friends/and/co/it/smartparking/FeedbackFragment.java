@@ -81,8 +81,6 @@ public class FeedbackFragment extends Fragment {
         Snackbar.make(view, "Feedback Screen", Snackbar.LENGTH_LONG).show();
 
 
-
-
         return inflater.inflate(R.layout.fragment_feedback, container, false);
     }
 
@@ -115,7 +113,7 @@ public class FeedbackFragment extends Fragment {
                 reference.child("Customer Email").setValue(reveiewEmail);
                 reference.child("Customer Review").setValue(reveiewData);
 
-                reference.child("Rating").setValue(ratings);
+                reference.child("Ratings").setValue(ratings);
 
 
             }
