@@ -25,4 +25,10 @@
         android:orderInCategory="100"
         android:title="@string/help"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/teams"
+        android:orderInCategory="100"
+        android:title="Collaborators"
+        app:showAsAction="never"/>
 </menu>
