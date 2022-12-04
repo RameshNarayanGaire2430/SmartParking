@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Fragment fragmentSupport;
     Fragment fragmentShare;
     Fragment fragmentSettings;
-    private Fragment fragmentLogout;
+    private Fragment fragmentCollaborator;
     private Fragment fragmentInformation;
 
     @Override
@@ -200,8 +200,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.collaborators:
                 Toast.makeText(this, "Collaborators", Toast.LENGTH_SHORT).show();
-                if (this.fragmentSupport == null) this.fragmentSupport = SupportFragment.newInstance();
-                this.startTransactionFragment(this.fragmentSupport);
+                if (this.fragmentCollaborator == null) this.fragmentCollaborator = CollaboratorsFragment.newInstance();
+                this.startTransactionFragment(this.fragmentCollaborator);
                 break;
 
             case R.id.about:
