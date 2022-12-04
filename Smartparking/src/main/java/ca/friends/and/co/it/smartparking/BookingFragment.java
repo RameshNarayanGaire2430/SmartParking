@@ -21,9 +21,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -40,6 +44,17 @@ public class BookingFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     View view;
+    Button button;
+    EditText fullname;
+    EditText contact;
+    EditText date;
+    EditText duration;
+
+    String bookingName;
+    String bookingContact;
+    String bookingDate;
+    String bookingDuration;
+
     Bundle resultBundle = new Bundle();
 
     // TODO: Rename and change types of parameters
@@ -77,6 +92,49 @@ public class BookingFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        fullname = view.findViewById(R.id.full_name);
+        contact = view.findViewById(R.id.contact_number);
+        date = view.findViewById(R.id.date);
+        duration = view.findViewById(R.id.duration);
+
+        button = view.findViewById(R.id.book_button);
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Booking Details");
+
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bookingName = fullname.getText().toString();
+                bookingContact = contact.getText().toString();
+                bookingDate = date.getText().toString();
+                bookingDuration = duration.getText().toString();
+
+                reference.child("Customer Name").setValue(bookingName);
+                reference.child("Customer Phone").setValue(bookingContact);
+                reference.child("Booking Date").setValue(bookingDate);
+                reference.child("Duration").setValue(bookingDuration);
+
+
+
+                resultBundle.putString ("fullname", fullname.getText().toString());
+                resultBundle.putString ("contact", contact.getText().toString());
+                resultBundle.putString ("date", date.getText().toString());
+                resultBundle.putString ("duration", duration.getText().toString());
+                AsyncTaskRunner runner = new AsyncTaskRunner();
+                String sleepTime = "3";
+                runner.execute(sleepTime);
+
+
+
+            }
+        });
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -87,11 +145,11 @@ public class BookingFragment extends Fragment {
 
         // Inflate the layout for this fragment
         view =  inflater.inflate(R.layout.fragment_booking, container, false);
-        Button button = view.findViewById(R.id.book_button);
-        EditText fullname = view.findViewById(R.id.full_name);
-        EditText contact = view.findViewById(R.id.contact_number);
-        EditText date = view.findViewById(R.id.date);
-        EditText duration = view.findViewById(R.id.duration);
+        button = view.findViewById(R.id.book_button);
+        fullname = view.findViewById(R.id.full_name);
+        contact = view.findViewById(R.id.contact_number);
+        date = view.findViewById(R.id.date);
+        duration = view.findViewById(R.id.duration);
 
         date.addTextChangedListener(new TextWatcher() {
 
@@ -152,25 +210,6 @@ public class BookingFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
 
-            }
-        });
-
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                resultBundle.putString ("fullname", fullname.getText().toString());
-                resultBundle.putString ("contact", contact.getText().toString());
-                resultBundle.putString ("date", date.getText().toString());
-                resultBundle.putString ("duration", duration.getText().toString());
-                AsyncTaskRunner runner = new AsyncTaskRunner();
-                String sleepTime = "3";
-                runner.execute(sleepTime);
-
-/*
-                editText.setText("");*/
             }
         });
         return view;

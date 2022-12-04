@@ -112,7 +112,6 @@ public class FeedbackFragment extends Fragment {
                 reference.child("Customer Phone").setValue(reveiewPhone);
                 reference.child("Customer Email").setValue(reveiewEmail);
                 reference.child("Customer Review").setValue(reveiewData);
-
                 reference.child("Ratings").setValue(ratings);
 
 
