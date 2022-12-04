@@ -39,7 +39,7 @@
     <EditText
         android:id="@+id/userReviewName"
         android:layout_width="378dp"
-        android:layout_height="98dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginTop="200dp"
         android:hint="@string/full_name"
@@ -49,8 +49,8 @@
 
     <EditText
         android:id="@+id/userReviewPhone"
-        android:layout_width="378dp"
-        android:layout_height="98dp"
+        android:layout_width="376dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginTop="300dp"
         android:hint="Phone number"
@@ -60,8 +60,8 @@
 
     <EditText
         android:id="@+id/userReviewEmail"
-        android:layout_width="378dp"
-        android:layout_height="98dp"
+        android:layout_width="376dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginTop="400dp"
         android:hint="@string/e_mail"
