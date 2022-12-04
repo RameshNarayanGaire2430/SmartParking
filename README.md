@@ -24,7 +24,7 @@
 ##  Design and layout of all the screens on the application
 ##  Register and login page for users
 ##  Settings options to change mode of the application
-## creation of database in cloud 
+## creation of database in cloud 
 
 
 # We updated the application in many ways
