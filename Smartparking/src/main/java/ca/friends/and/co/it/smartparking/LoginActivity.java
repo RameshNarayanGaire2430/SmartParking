@@ -5,6 +5,7 @@ package ca.friends.and.co.it.smartparking;
 // Rushi Bhandari N01464259, ONA
 // Komal Bamotra N01426087,ONA
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,12 +13,15 @@ import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -29,12 +33,18 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText etLoginEmail;
     TextInputEditText etLoginPassword;
     TextView tvRegisterHere;
+    ImageView googleLogo;
     Button btnLogin;
     CheckBox remember;
+    //Google login
+    private GoogleSignInOptions gso;
+    private GoogleSignInClient gsc;
+
 
 
     FirebaseAuth mAuth;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         tvRegisterHere = findViewById(R.id.tvRegisterHere);
         btnLogin = findViewById(R.id.btnLogin);
         remember = findViewById(R.id.remember);
-
+        googleLogo = findViewById(R.id.googleID);
         mAuth = FirebaseAuth.getInstance();
 
         SharedPreferences preferences1 = getSharedPreferences("checkbox1",MODE_PRIVATE);
@@ -89,6 +99,10 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public void googleSignInProcess(){
+        Intent googleSignInIntent = gsc.getSignInIntent();
+        startActivityForResult(googleSignInIntent,1000);
     }
 
     private void loginUser(){
