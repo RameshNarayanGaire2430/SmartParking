@@ -47,12 +47,12 @@
 
     <ImageView
         android:id="@+id/share_imagebtn"
-        android:layout_width="116dp"
-        android:layout_height="129dp"
+        android:layout_width="134dp"
+        android:layout_height="140dp"
         android:layout_marginTop="404dp"
         android:src="@drawable/share_icon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.782"
+        app:layout_constraintHorizontal_bias="0.909"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
