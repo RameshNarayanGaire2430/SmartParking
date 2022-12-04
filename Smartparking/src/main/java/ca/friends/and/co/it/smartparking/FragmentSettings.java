@@ -40,6 +40,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -175,6 +176,7 @@ public class FragmentSettings extends Fragment {
                     getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                 }
                 else if(landscape.isChecked()){
+
                     getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
                 }
@@ -198,10 +200,17 @@ public class FragmentSettings extends Fragment {
         });
 
 
+        View v = getActivity().findViewById(android.R.id.content);
+        Snackbar.make(v, "Settings Screen", Snackbar.LENGTH_LONG).show();
+
+
 
 
 
         return view;
+
+
+
     }
     public void createNotification(){
         if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){

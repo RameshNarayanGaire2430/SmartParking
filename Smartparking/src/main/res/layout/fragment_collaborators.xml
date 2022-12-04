@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CollaboratorsFragment">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="294dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/collaborators" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="389dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="30dp"
+        android:text="COLLABORATORS"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ramesh"
+        android:layout_width="374dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="450dp"
+        android:text="RAMESH NARAYAN GAIRE"
+        android:textAlignment="center"
+        android:textSize="17sp"
+        android:textStyle="italic|bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/komal"
+        android:layout_width="378dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="500dp"
+        android:text="KOMAL BAMOTRA"
+        android:textAlignment="center"
+
+        android:textSize="17sp"
+        android:textStyle="italic|bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/roshan"
+        android:layout_width="380dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="550dp"
+        android:text="ROSHAN SHRESTHA"
+        android:textAlignment="center"
+
+        android:textSize="17sp"
+        android:textStyle="italic|bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rushi"
+        android:layout_width="378dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="600dp"
+        android:text="RUSHI BHANDARI"
+        android:textAlignment="center"
+
+        android:textSize="17sp"
+        android:textStyle="italic|bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</FrameLayout>

@@ -6,6 +6,7 @@ package ca.friends.and.co.it.smartparking;
 // Komal Bamotra N01426087,ONA
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Fragment fragmentSupport;
     Fragment fragmentShare;
     Fragment fragmentSettings;
-    private Fragment fragmentLogout;
+    private Fragment fragmentCollaborator;
     private Fragment fragmentInformation;
 
     @Override
@@ -158,7 +160,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    @SuppressLint("RestrictedApi")
     public boolean onCreateOptionsMenu(Menu menu){
+
+        if (menu instanceof MenuBuilder) {
+            ((MenuBuilder) menu).setOptionalIconsVisible(true);
+        }
+
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -190,6 +198,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 this.startTransactionFragment(this.fragmentSupport);
                 break;
 
+            case R.id.collaborators:
+                Toast.makeText(this, "Collaborators", Toast.LENGTH_SHORT).show();
+                if (this.fragmentCollaborator == null) this.fragmentCollaborator = CollaboratorsFragment.newInstance();
+                this.startTransactionFragment(this.fragmentCollaborator);
+                break;
+
             case R.id.about:
                 Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
                 if (this.fragmentInformation == null) this.fragmentInformation = InformationFragment.newInstance();
@@ -197,10 +211,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.setting:
-
                 if (this.fragmentSettings == null) this.fragmentSettings = FragmentSettings.newInstance();
                 this.startTransactionFragment(this.fragmentSettings);
-
                 Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
                 break;
 
