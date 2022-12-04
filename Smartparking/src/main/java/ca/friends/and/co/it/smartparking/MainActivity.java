@@ -6,6 +6,7 @@ package ca.friends.and.co.it.smartparking;
 // Komal Bamotra N01426087,ONA
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -158,7 +160,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    @SuppressLint("RestrictedApi")
     public boolean onCreateOptionsMenu(Menu menu){
+
+        if (menu instanceof MenuBuilder) {
+            ((MenuBuilder) menu).setOptionalIconsVisible(true);
+        }
+
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
