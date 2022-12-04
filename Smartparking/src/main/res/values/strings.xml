@@ -71,6 +71,8 @@
     <string name="item_others">Others</string>
     <string name="item_settings">Settings</string>
     <string name="item_logout">Logout</string>
+    <string name="copyright">Copyright &#169; F.R.I.E.N.D.S.&amp; CO.</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="about_us">About Us</string>
