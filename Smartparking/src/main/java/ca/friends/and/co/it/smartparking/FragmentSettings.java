@@ -176,6 +176,7 @@ public class FragmentSettings extends Fragment {
                     getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                 }
                 else if(landscape.isChecked()){
+
                     getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
                 }
