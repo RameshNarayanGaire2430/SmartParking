@@ -13,7 +13,9 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -31,6 +33,12 @@ public class HomeFragment extends Fragment {
     ImageView imageView2;
     ImageView imageView3;
     ImageView imageView4;
+
+    TextView bookHome;
+    TextView feedbackHome;
+    TextView supportHome;
+    TextView shareHome;
+
     FloatingActionButton button;
 
     private Fragment fragmentBooking;
@@ -87,7 +95,22 @@ public class HomeFragment extends Fragment {
         imageView2 = view.findViewById(R.id.support_imagebtn);
         imageView3 = view.findViewById(R.id.share_imagebtn);
         imageView4 = view.findViewById(R.id.feedback_imagebtn);
+
+        bookHome = view.findViewById(R.id.book_home);
+        feedbackHome = view.findViewById(R.id.feedback_home);
+        supportHome = view.findViewById(R.id.support_home);
+        shareHome = view.findViewById(R.id.share_home);
+
+
         button=view.findViewById(R.id.fab_btn);
+
+        bookHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Toast.makeText(getContext(), "You are entering booking screen", Toast.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new BookingFragment()).commit();
+            }
+        });
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,11 +118,30 @@ public class HomeFragment extends Fragment {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new BookingFragment()).commit();
             }
         });
+
+
+        supportHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(getContext(), "You are entering Support screen", Toast.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new SupportFragment()).commit();
+            }
+        });
+
         imageView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(getContext(), "You are entering Support screen", Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new SupportFragment()).commit();
+            }
+        });
+
+
+        shareHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Toast.makeText(getContext(), "You are entering Share screen", Toast.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new ShareFragment()).commit();
             }
         });
         imageView3.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +152,16 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+        feedbackHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(getContext(), "You are entering feedback screen", Toast.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new FeedbackFragment()).commit();
+            }
+        });
+
+
         imageView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,6 +169,10 @@ public class HomeFragment extends Fragment {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new FeedbackFragment()).commit();
             }
         });
+
+
+
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
