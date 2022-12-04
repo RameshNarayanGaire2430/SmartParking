@@ -7,7 +7,7 @@
     <string name="app_name">Smart Parking</string>
     <string name="nav_open">Open navigation drawer</string>
     <string name="nav_close">Close navigation drawer</string>
-    <string name="nav_header_title">Smart Parking</string>
+    <string name="nav_header_title">Smart Parking (1.0)</string>
     <string name="nav_header_subtitle">friendsandco@smartparking.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
