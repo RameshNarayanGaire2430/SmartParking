@@ -7,7 +7,11 @@ package ca.friends.and.co.it.smartparking;
 
 
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -169,6 +173,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Fabbutton", Toast.LENGTH_SHORT).show();
+
+                SharedPreferences preferences1 = getActivity().getSharedPreferences("checkbox1", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences1.edit();
+                editor.putString("rememberme", "false");
+                editor.apply();
+
+                startActivity(new Intent(getContext(), LoginActivity.class));
+
             }
         });
 
