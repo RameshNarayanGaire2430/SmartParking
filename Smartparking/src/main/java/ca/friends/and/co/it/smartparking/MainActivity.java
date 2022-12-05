@@ -32,10 +32,6 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
 
-//Ramesh Narayan Gaire N01452430, ONA
-//Roshan Shrestha N01457532, ONA
-// Rushi Bhandari N01464259, ONA
-// Komal Bamotra N01426087,ONA
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     public DrawerLayout drawerLayout;
@@ -74,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
         setSupportActionBar(toolbar);
 
-       // PreferenceManager.setDefaultValues(this, R.xml.prefs, false);
     }
 
 
@@ -96,53 +91,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             //Opening home fragment
             case R.id.nav_home:
-                //  Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
+
                 if (this.fragmentHome == null) this.fragmentHome = HomeFragment.newInstance();
                 this.startTransactionFragment(this.fragmentHome);
                 break;
 
             //Opening booking fragment
             case R.id.nav_booking:
-                //  Toast.makeText(getApplicationContext(), "Booking", Toast.LENGTH_SHORT).show();
-               /* if (this.fragmentBooking == null) this.fragmentBooking = BookingFragment.newInstance();
-                this.startTransactionFragment(this.fragmentBooking);
-                */
-
                 getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new BookingFragment()).commit();
 
                 break;
 
             //Opening booking detail fragment
             case R.id.nav_booking_detail:
-                // Toast.makeText(getApplicationContext(), "Booking Details", Toast.LENGTH_SHORT).show();
                 if (this.fragmentBookingDetail == null) this.fragmentBookingDetail = BookingDetailFragment.newInstance();
                 this.startTransactionFragment(this.fragmentBookingDetail);
                 break;
 
             //Opening support fragment
             case R.id.nav_support:
-                // Toast.makeText(getApplicationContext(), "Support", Toast.LENGTH_SHORT).show();
                 if (this.fragmentSupport == null) this.fragmentSupport = SupportFragment.newInstance();
                 this.startTransactionFragment(this.fragmentSupport);
                 break;
 
             //Opening share fragment
             case R.id.nav_share:
-                // Toast.makeText(getApplicationContext(), "Share", Toast.LENGTH_SHORT).show();
                 if (this.fragmentShare == null) this.fragmentShare = ShareFragment.newInstance();
                 this.startTransactionFragment(this.fragmentShare);
                 break;
 
             //Opening settings fragment
             case R.id.nav_settings:
-                // Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
                 if (this.fragmentSettings == null) this.fragmentSettings = FragmentSettings.newInstance();
                 this.startTransactionFragment(this.fragmentSettings);
                 break;
 
             //Opening logout fragment
             case R.id.nav_logout:
-                //  Toast.makeText(getApplicationContext(), "Logout page", Toast.LENGTH_SHORT).show();
                 SharedPreferences preferences1 = getSharedPreferences("checkbox1", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences1.edit();
                 editor.putString("rememberme", "false");

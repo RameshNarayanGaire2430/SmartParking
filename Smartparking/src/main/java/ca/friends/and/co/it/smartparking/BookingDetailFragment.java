@@ -77,15 +77,6 @@ public class BookingDetailFragment extends Fragment {
 
         view =  inflater.inflate(R.layout.fragment_booking_detail, container, false);
 
-/*        getParentFragmentManager().setFragmentResultListener("namefrombooking", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-
-                String data = result.getString("fullname");
-                TextView textView = view.findViewById(R.id.recieving_full_name);
-                textView.setText(data);
-            }
-        });*/
 
         TextView recievingfullname = view.findViewById(R.id.recieving_full_name);
         TextView recievingContact = view.findViewById(R.id.recieving_contact);

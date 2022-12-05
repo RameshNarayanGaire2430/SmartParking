@@ -71,5 +71,42 @@
     <string name="item_settings">Réglages</string>
     <string name="item_logout">Se déconnecter</string>
 
+    <string name="copyright">Droits d\'auteur &#169; F.R.I.E.N.D.S.&amp;amp ; CO.</string>
+
+    <string name="hello_blank_fragment">Bonjour fragment vierge</string>
+    <string name="about_us">À propos de nous</string>
+     <string name="title_info">Vous voulez savoir comment nous travaillons ??</string>
+    <string name="login">Connexion</string>
+    <string name="Email">E-mail</string>
+    <string name="password">Mot de passe</string>
+    <string name="remember_me">Souviens-toi de moi</string>
+    <string name="Login">Connexion</string>
+    <string name="not_registered_yet">Pas encore inscrit</string>
+    <string name="register_here">Inscrivez-vous ici</string>
+    <string name="or_sign_in_with">ou connectez-vous avec</string>
+    <string name="email1">E-mail</string>
+    <string name="password1">Mot de passe</string>
+    <string name="confim_password">Confirmez le mot de passe</string>
+    <string name="already_registered">Déjà enregistré</string>
+    <string name="login_here">Connectez-vous ici</string>
+    <string name="rate_and_review">Notez et évaluez</string>
+    <string name="what_do_you_think_about_this_appication">Que pensez-vous de cette application ?</string>
+    <string name="send">Envoyer</string>
+    <string name="enable_night_mode">Activer le mode nuit</string>
+    <string name="on">Sur</string>
+    <string name="potrait">Portrait</string>
+    <string name="landscape">Paysage</string>
+    <string name="enable_notification">Activer les notifications</string>
+    <string name="on_off">Allumé éteint</string>
+    <string name="change_password">Changer le mot de passe</string>
+    <string name="give_us_feedback">Donnez-nous vos commentaires!</string>
+    <string name="gmail">Gmail</string>
+    <string name="teams">Équipes</string>
+    <string name="messenger">Messenger</string>
+    <string name="instagram">Instagram</string>
+    <string name="message1">Message</string>
+    <string name="viber">Viber</string>
+    <string name="collaborators">Collaborators</string>
+
 
 </resources>

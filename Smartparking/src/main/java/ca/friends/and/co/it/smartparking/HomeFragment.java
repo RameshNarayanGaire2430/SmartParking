@@ -107,14 +107,12 @@ public class HomeFragment extends Fragment {
         bookHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Toast.makeText(getContext(), "You are entering booking screen", Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new BookingFragment()).commit();
             }
         });
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Toast.makeText(getContext(), "You are entering booking screen", Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new BookingFragment()).commit();
             }
         });
@@ -123,7 +121,6 @@ public class HomeFragment extends Fragment {
         supportHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(getContext(), "You are entering Support screen", Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new SupportFragment()).commit();
             }
         });
@@ -131,7 +128,6 @@ public class HomeFragment extends Fragment {
         imageView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(getContext(), "You are entering Support screen", Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new SupportFragment()).commit();
             }
         });
@@ -140,14 +136,12 @@ public class HomeFragment extends Fragment {
         shareHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Toast.makeText(getContext(), "You are entering Share screen", Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new ShareFragment()).commit();
             }
         });
         imageView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Toast.makeText(getContext(), "You are entering Share screen", Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new ShareFragment()).commit();
             }
         });
@@ -156,7 +150,6 @@ public class HomeFragment extends Fragment {
         feedbackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(getContext(), "You are entering feedback screen", Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new FeedbackFragment()).commit();
             }
         });
@@ -165,7 +158,6 @@ public class HomeFragment extends Fragment {
         imageView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(getContext(), "You are entering feedback screen", Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_frame_layout, new FeedbackFragment()).commit();
             }
         });
@@ -177,7 +169,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Fabbutton", Toast.LENGTH_SHORT).show();
-
             }
         });
 

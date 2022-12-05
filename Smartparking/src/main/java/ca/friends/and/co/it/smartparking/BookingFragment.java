@@ -9,9 +9,14 @@ package ca.friends.and.co.it.smartparking;
 // single responsibility principle used
 // This java class is only related to booking
 
+import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -21,9 +26,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -40,6 +51,17 @@ public class BookingFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     View view;
+    Button button;
+    EditText fullname;
+    EditText contact;
+    EditText date;
+    EditText duration;
+    String message;
+    String bookingName;
+    String bookingContact;
+    String bookingDate;
+    String bookingDuration;
+
     Bundle resultBundle = new Bundle();
 
     // TODO: Rename and change types of parameters
@@ -77,6 +99,47 @@ public class BookingFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        fullname = view.findViewById(R.id.full_name);
+        contact = view.findViewById(R.id.contact_number);
+        date = view.findViewById(R.id.date);
+        duration = view.findViewById(R.id.duration);
+
+        button = view.findViewById(R.id.book_button);
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Booking Details");
+
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bookingName = fullname.getText().toString();
+                bookingContact = contact.getText().toString();
+                bookingDate = date.getText().toString();
+                bookingDuration = duration.getText().toString();
+
+                reference.child("Customer Name").setValue(bookingName);
+                reference.child("Customer Phone").setValue(bookingContact);
+                reference.child("Booking Date").setValue(bookingDate);
+                reference.child("Duration").setValue(bookingDuration);
+
+
+
+                resultBundle.putString ("fullname", fullname.getText().toString());
+                resultBundle.putString ("contact", contact.getText().toString());
+                resultBundle.putString ("date", date.getText().toString());
+                resultBundle.putString ("duration", duration.getText().toString());
+                AsyncTaskRunner runner = new AsyncTaskRunner();
+                String sleepTime = "3";
+                runner.execute(sleepTime);
+                sendSMSMessage();
+            }
+        });
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -87,11 +150,11 @@ public class BookingFragment extends Fragment {
 
         // Inflate the layout for this fragment
         view =  inflater.inflate(R.layout.fragment_booking, container, false);
-        Button button = view.findViewById(R.id.book_button);
-        EditText fullname = view.findViewById(R.id.full_name);
-        EditText contact = view.findViewById(R.id.contact_number);
-        EditText date = view.findViewById(R.id.date);
-        EditText duration = view.findViewById(R.id.duration);
+        button = view.findViewById(R.id.book_button);
+        fullname = view.findViewById(R.id.full_name);
+        contact = view.findViewById(R.id.contact_number);
+        date = view.findViewById(R.id.date);
+        duration = view.findViewById(R.id.duration);
 
         date.addTextChangedListener(new TextWatcher() {
 
@@ -154,29 +217,40 @@ public class BookingFragment extends Fragment {
 
             }
         });
-
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                resultBundle.putString ("fullname", fullname.getText().toString());
-                resultBundle.putString ("contact", contact.getText().toString());
-                resultBundle.putString ("date", date.getText().toString());
-                resultBundle.putString ("duration", duration.getText().toString());
-                AsyncTaskRunner runner = new AsyncTaskRunner();
-                String sleepTime = "3";
-                runner.execute(sleepTime);
-
-/*
-                editText.setText("");*/
-            }
-        });
         return view;
     }
 
-    private class AsyncTaskRunner extends AsyncTask<String, String, String> {
+    protected void sendSMSMessage() {
+        //bookingContact = txtphoneNo.getText().toString();
+         message = "Thank you for booking with us!";
+
+        String phoneNo = bookingContact;//The phone number you want to text
+        String sms= "Smart Parking: \n"+"Here are your booking details\n"+"Name: "+bookingName+"\n"+"Phone number: "+bookingContact+"\n"+"Date: "+bookingDate+"\n"+"Duration: "+bookingDuration+"\nThanks for booking with us! ";//The message you want to text to the phone
+
+
+        SmsManager.getDefault().sendTextMessage(phoneNo, null, sms, null,null);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 100: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(bookingContact, null, message, null, null);
+                    Toast.makeText(getContext(), "SMS sent.",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(),
+                            "SMS faild, please try again.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        }
+    }
+
+        private class AsyncTaskRunner extends AsyncTask<String, String, String> {
 
         private String resp;
         ProgressDialog progressDialog;
