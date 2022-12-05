@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -31,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
     TextInputEditText etRegPassword;
     TextInputEditText etRegPasswordConfirm;
     TextView tvLoginHere;
+    Boolean validated = false;
     Button btnRegister;
 
     FirebaseAuth mAuth;
@@ -63,36 +66,60 @@ public class RegisterActivity extends AppCompatActivity {
         String password = etRegPassword.getText().toString();
         String passwordConfirm = etRegPasswordConfirm.getText().toString();
 
+        if(validated==false) {
+            if (TextUtils.isEmpty(email)) {
+                etRegEmail.setError("Email cannot be empty");
+                etRegEmail.requestFocus();
+            } else if (isValidPassword(password)) {
+                etRegPassword.setError("Please enter at least !@#$% ... and at least one Capital letter");
+                etRegPassword.requestFocus();
+            } else if (TextUtils.isEmpty(password)) {
+                etRegPassword.setError("Password cannot be empty");
+                etRegPassword.requestFocus();
+            } else if (TextUtils.isEmpty(passwordConfirm)) {
+                etRegPasswordConfirm.setError("Confirm Your Password");
+                etRegPasswordConfirm.requestFocus();
+            } else if (!(passwordConfirm.matches(password))) {
+                etRegPasswordConfirm.setError("Password Does not match!");
+                etRegPasswordConfirm.requestFocus();
+            } else if (etRegPassword.length() < 8) {
+                etRegPassword.setError("Password should be more then 8 characters");
+                etRegPassword.requestFocus();
+            }
+            validated = true;
+        }else{
+            registerUser(email,password,validated);
+        }
+    }
 
-        if (TextUtils.isEmpty(email)){
-            etRegEmail.setError("Email cannot be empty");
-            etRegEmail.requestFocus();
-        }else if (TextUtils.isEmpty(password)){
-            etRegPassword.setError("Password cannot be empty");
-            etRegPassword.requestFocus();
-        }else if (TextUtils.isEmpty(passwordConfirm)){
-            etRegPasswordConfirm.setError("Confirm Your Password");
-            etRegPasswordConfirm.requestFocus();
-        }else if (!(passwordConfirm.matches(password))){
-            etRegPasswordConfirm.setError("Password Does not match!");
-            etRegPasswordConfirm.requestFocus();
-        }else if(etRegPassword.length()<8){
-            etRegPassword.setError("Password should be more then 8 characters");
-            etRegPassword.requestFocus();
-        }else
-        {
-            mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    private void registerUser(String email, String password,boolean validated) {
+        if(validated) {
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         Toast.makeText(RegisterActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                    }else{
+                    } else {
                         Toast.makeText(RegisterActivity.this, "Registration Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
         }
     }
+
+    public boolean isValidPassword(final String password) {
+
+        Pattern pattern;
+        Matcher matcher;
+
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$";
+
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+
+        return matcher.matches();
+
+}
 
 }
