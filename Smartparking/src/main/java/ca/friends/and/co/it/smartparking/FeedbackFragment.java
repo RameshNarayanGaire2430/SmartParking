@@ -165,7 +165,7 @@ public class FeedbackFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             progressDialog = ProgressDialog.show(getContext(),
-                    "Confirming...",
+                    "Sending Feedback...",
                     "Wait for few seconds");
         }
 

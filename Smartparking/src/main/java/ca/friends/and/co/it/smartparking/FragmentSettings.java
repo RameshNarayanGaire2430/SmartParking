@@ -114,6 +114,7 @@ public class FragmentSettings extends Fragment {
             userId = mAuth.getCurrentUser().getUid();
         }
 
+
         feedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
