@@ -62,6 +62,7 @@ public class FragmentSettings extends Fragment {
     private Button changePassword;
     private Button feedbackButton;
     String userId;
+
     FirebaseUser user;
     FirebaseAuth mAuth;
 
