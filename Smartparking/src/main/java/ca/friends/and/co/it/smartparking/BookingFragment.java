@@ -9,9 +9,14 @@ package ca.friends.and.co.it.smartparking;
 // single responsibility principle used
 // This java class is only related to booking
 
+import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -23,6 +28,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -49,7 +56,7 @@ public class BookingFragment extends Fragment {
     EditText contact;
     EditText date;
     EditText duration;
-
+    String message;
     String bookingName;
     String bookingContact;
     String bookingDate;
@@ -127,9 +134,7 @@ public class BookingFragment extends Fragment {
                 AsyncTaskRunner runner = new AsyncTaskRunner();
                 String sleepTime = "3";
                 runner.execute(sleepTime);
-
-
-
+                sendSMSMessage();
             }
         });
     }
@@ -215,7 +220,37 @@ public class BookingFragment extends Fragment {
         return view;
     }
 
-    private class AsyncTaskRunner extends AsyncTask<String, String, String> {
+    protected void sendSMSMessage() {
+        //bookingContact = txtphoneNo.getText().toString();
+         message = "Thank you for booking with us!";
+
+        String phoneNo = bookingContact;//The phone number you want to text
+        String sms= "Smart Parking: \n"+"Here are your booking details\n"+"Name: "+bookingName+"\n"+"Phone number: "+bookingContact+"\n"+"Date: "+bookingDate+"\n"+"Duration: "+bookingDuration+"\nThanks for booking with us! ";//The message you want to text to the phone
+
+
+        SmsManager.getDefault().sendTextMessage(phoneNo, null, sms, null,null);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 100: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(bookingContact, null, message, null, null);
+                    Toast.makeText(getContext(), "SMS sent.",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(),
+                            "SMS faild, please try again.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        }
+    }
+
+        private class AsyncTaskRunner extends AsyncTask<String, String, String> {
 
         private String resp;
         ProgressDialog progressDialog;
