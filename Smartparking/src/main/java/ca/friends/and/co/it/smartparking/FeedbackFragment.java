@@ -9,6 +9,8 @@ package ca.friends.and.co.it.smartparking;
 // single responsibility principle used
 // This java class is only related to giving the feedback
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,6 +47,7 @@ public class FeedbackFragment extends Fragment {
     Button sendButton;
     float ratings;
 
+    Bundle resultBundle = new Bundle();
 
     public FeedbackFragment() {
         // Required empty public constructor
@@ -114,8 +118,62 @@ public class FeedbackFragment extends Fragment {
                 reference.child("Customer Review").setValue(reveiewData);
                 reference.child("Ratings").setValue(ratings);
 
-
+                FeedbackFragment.AsyncTaskRunner runner = new FeedbackFragment.AsyncTaskRunner();
+                String sleepTime = "3";
+                runner.execute(sleepTime);
             }
         });
+    }
+
+
+    private class AsyncTaskRunner extends AsyncTask<String, String, String> {
+
+        private String resp;
+        ProgressDialog progressDialog;
+
+
+        @Override
+        protected String doInBackground(String... params) {
+            publishProgress("Sleeping..."); // Calls onProgressUpdate()
+            try {
+                int time = Integer.parseInt(params[0])*1000;
+
+                Thread.sleep(time);
+                resp = "Slept for " + params[0] + " seconds";
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                resp = e.getMessage();
+            } catch (Exception e) {
+                e.printStackTrace();
+                resp = e.getMessage();
+            }
+            return resp;
+        }
+
+
+        @Override
+        protected void onPostExecute(String result) {
+            // execution of result of Long time consuming operation
+            progressDialog.dismiss();
+
+            Toast.makeText(getContext(), "Feedback given!", Toast.LENGTH_SHORT).show();
+
+        }
+
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog = ProgressDialog.show(getContext(),
+                    "Confirming...",
+                    "Wait for few seconds");
+        }
+
+
+        @Override
+        protected void onProgressUpdate(String... text) {
+
+
+        }
     }
 }
