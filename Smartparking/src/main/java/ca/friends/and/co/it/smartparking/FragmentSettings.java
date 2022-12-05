@@ -205,11 +205,6 @@ public class FragmentSettings extends Fragment {
 
         View v = getActivity().findViewById(android.R.id.content);
         Snackbar.make(v, "Settings Screen", Snackbar.LENGTH_LONG).show();
-
-
-
-
-
         return view;
 
 
