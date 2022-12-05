@@ -105,10 +105,11 @@ public class FragmentSettings extends Fragment {
         landscape = view.findViewById(R.id.landscape);
         feedbackButton = view.findViewById(R.id.give_feedback_button);
         changePassword = view.findViewById(R.id.settings_change_password_button);
-        mAuth = FirebaseAuth.getInstance();
+
 
         user = mAuth.getCurrentUser();
         if(user != null) {
+            mAuth = FirebaseAuth.getInstance();
             userId = mAuth.getCurrentUser().getUid();
         }
 
