@@ -172,7 +172,7 @@ public class HomeFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Fabbutton", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Logging Out", Toast.LENGTH_SHORT).show();
 
                 SharedPreferences preferences1 = getActivity().getSharedPreferences("checkbox1", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences1.edit();
