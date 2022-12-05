@@ -65,6 +65,7 @@ public class FragmentSettings extends Fragment {
     FirebaseUser user;
     FirebaseAuth mAuth;
 
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     public FragmentSettings() {
@@ -106,8 +107,10 @@ public class FragmentSettings extends Fragment {
         changePassword = view.findViewById(R.id.settings_change_password_button);
         mAuth = FirebaseAuth.getInstance();
 
-        userId = mAuth.getCurrentUser().getUid();
         user = mAuth.getCurrentUser();
+        if(user != null) {
+            userId = mAuth.getCurrentUser().getUid();
+        }
 
         feedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,11 +205,6 @@ public class FragmentSettings extends Fragment {
 
         View v = getActivity().findViewById(android.R.id.content);
         Snackbar.make(v, "Settings Screen", Snackbar.LENGTH_LONG).show();
-
-
-
-
-
         return view;
 
 

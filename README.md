@@ -26,7 +26,6 @@
 ##  Settings options to change mode of the application
 ## creation of database in cloud 
 
-
 # We updated the application in many ways
 
 ## Login and registration screens were created. Also, remember me option added for the direct login.
@@ -41,4 +40,21 @@
 ## Support screen is created to get help 
 
 ## share app option is designed to share the application.
+
+## items and names both are clickable 
+
+## fab button added along with app version with 1.0, initial and copyright added
+
+## In booking form full name with length 25 characters only, date in dd/mm/yyyy format and duration in hours with length 2 numbers made
+
+## Data stores in database when we put data in booking form and also displays in booking details
+
+## collaborators added in menu with icon in about, contact and collaborators
+
+## In setting fragment, there are enable night mode, screen orientation in Potrait/ Landscape mode, enable notification with on/off, change password and feedback 
+
+## In help fragment, there we see and use get in touch with live chat, email and call us
+
+## Logout fragment is used for logout and then again we need to log in to use app
+
 
