@@ -108,8 +108,9 @@ public class FragmentSettings extends Fragment {
         changePassword = view.findViewById(R.id.settings_change_password_button);
 
 
-        user = mAuth.getCurrentUser();
+
         if(user != null) {
+            user = mAuth.getCurrentUser();
             mAuth = FirebaseAuth.getInstance();
             userId = mAuth.getCurrentUser().getUid();
         }
