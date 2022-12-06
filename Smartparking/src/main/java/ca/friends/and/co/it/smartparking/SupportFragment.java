@@ -137,8 +137,6 @@ public class SupportFragment extends Fragment {
             startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
         }
     }
-
-
     // Design pattern used (Builder pattern)
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -152,7 +150,6 @@ public class SupportFragment extends Fragment {
                         public void onClick(DialogInterface dialog, int which) {
                             ActivityCompat.requestPermissions(getActivity(),
                                     new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-
                         }
                     })
                     .setNegativeButton("Deny", new DialogInterface.OnClickListener() {
