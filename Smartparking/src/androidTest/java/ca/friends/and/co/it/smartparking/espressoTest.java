@@ -30,5 +30,11 @@ public void test_app_email(){
 
 }
 
+    @Test
+    public void test_app_password(){
+        onView(withId(R.id.etLoginPass)).perform(click());
+        onView(isAssignableFrom(EditText.class)).perform(typeText("Rushi123"),pressKey(KeyEvent.KEYCODE_ENTER));
+    }
+
 
 }
