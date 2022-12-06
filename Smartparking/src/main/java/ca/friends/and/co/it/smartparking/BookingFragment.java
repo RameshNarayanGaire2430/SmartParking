@@ -63,7 +63,8 @@ public class BookingFragment extends Fragment {
     String bookingContact;
     String bookingDate;
     String bookingDuration;
-
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     Bundle resultBundle = new Bundle();
 
     // TODO: Rename and change types of parameters
@@ -107,7 +108,8 @@ public class BookingFragment extends Fragment {
         contact = view.findViewById(R.id.contact_number);
         date = view.findViewById(R.id.date);
         duration = view.findViewById(R.id.duration);
-
+        sharedPreferences = getActivity().getSharedPreferences("Booking details",Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         button = view.findViewById(R.id.book_button);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Booking Details");
@@ -128,6 +130,11 @@ public class BookingFragment extends Fragment {
                 reference.child("Duration").setValue(bookingDuration);
 
 
+                //saving data offline
+                editor.putString("BookingName",fullname.getText().toString());
+                editor.putString("BookingContact",contact.getText().toString());
+                editor.putString("BookingDate",date.getText().toString());
+                editor.putString("BookingDuration",duration.getText().toString());
 
                 resultBundle.putString ("fullname", fullname.getText().toString());
                 resultBundle.putString ("contact", contact.getText().toString());
