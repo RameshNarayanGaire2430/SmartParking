@@ -40,6 +40,10 @@ public void test_app_google(){
     onView(withId(R.id.googleID)).perform(click());
 
 }
+@Test
+    public void test_app_register(){
+    onView(withId(R.id.tvRegisterHere)).perform(click());
+}
 
 
 }
