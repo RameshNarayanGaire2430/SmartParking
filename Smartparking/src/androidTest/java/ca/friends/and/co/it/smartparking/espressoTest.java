@@ -44,6 +44,15 @@ public void test_app_google(){
     public void test_app_register(){
     onView(withId(R.id.tvRegisterHere)).perform(click());
 }
+@Test
+    public void test_enter_login_credential(){
+    onView(withId(R.id.etLoginEmail)).perform(click());
+    onView(isAssignableFrom(EditText.class)).perform(typeText("bhandarirushi13@gmail.com"));
+    onView(withId(R.id.etLoginPass)).perform(click());
+    onView(isAssignableFrom(EditText.class)).perform(typeText("Rushi123"),pressKey(KeyEvent.KEYCODE_ENTER));
+    onView(withId(R.id.btnLogin)).perform(click());
+
+}
 
 
 }
