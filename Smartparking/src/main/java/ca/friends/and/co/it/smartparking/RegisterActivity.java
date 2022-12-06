@@ -32,6 +32,7 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
+
     TextInputEditText etRegEmail;
     TextInputEditText etRegPassword;
     TextInputEditText etRegPasswordConfirm;
