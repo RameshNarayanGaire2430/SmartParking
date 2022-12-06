@@ -156,7 +156,7 @@ public class ShareFragment extends Fragment {
 
 
 
-    // Dont Repeat yourself principle is used here by using gotoUrl method in differnt places
+    // Don't Repeat yourself principle is used here by using gotoUrl method in differnt places
     private void gotoUrl(String s) {
         Uri uri = Uri.parse(s);
         startActivity(new Intent(Intent.ACTION_VIEW, uri));
