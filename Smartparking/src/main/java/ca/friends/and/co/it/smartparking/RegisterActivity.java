@@ -7,9 +7,12 @@ package ca.friends.and.co.it.smartparking;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,11 +69,15 @@ public class RegisterActivity extends AppCompatActivity {
         String password = etRegPassword.getText().toString();
         String passwordConfirm = etRegPasswordConfirm.getText().toString();
 
+
         if(validated==false) {
             if (TextUtils.isEmpty(email)) {
                 etRegEmail.setError("Email cannot be empty");
                 etRegEmail.requestFocus();
-            } else if (isValidPassword(password)) {
+            }else if (emailValidation(email)) {
+                etRegEmail.setError("Please enter a valid email address");
+                etRegEmail.requestFocus();
+            }else if (isValidPassword(password)) {
                 etRegPassword.setError("Please enter at least !@#$% ... and at least one Capital letter");
                 etRegPassword.requestFocus();
             } else if (TextUtils.isEmpty(password)) {
@@ -122,5 +129,18 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 }
+
+    public boolean emailValidation(String email) {
+        String emailInput = etRegEmail.getText().toString();
+
+        if (!emailInput.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+            etRegEmail.setTextColor(Color.BLACK);
+            return true;
+        } else{
+            Toast.makeText(this, R.string.valid_email, Toast.LENGTH_SHORT).show();
+            etRegEmail.setTextColor(Color.RED);
+            return false;
+        }
+    }
 
 }
