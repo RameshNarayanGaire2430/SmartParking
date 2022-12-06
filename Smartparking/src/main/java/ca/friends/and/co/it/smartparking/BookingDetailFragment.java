@@ -9,6 +9,8 @@ package ca.friends.and.co.it.smartparking;
 // single responsibility principle used
 // This java class is only related to displaying the booking detail
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -93,6 +95,15 @@ public class BookingDetailFragment extends Fragment {
         recievingContact.setText(contact);
         recievingDate.setText(date);
         recievingDuration.setText(duration);
+
+        //Getting data offline
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Booking details", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        String spName = sharedPreferences.getString("BookingName","");
+        String spContact = sharedPreferences.getString("BookingContact","");
+        String spDate = sharedPreferences.getString("BookingDate","");
+        String spDuration = sharedPreferences.getString("BookingDuration","");
 
 
         return view;
