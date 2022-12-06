@@ -129,7 +129,8 @@ public class RegisterActivity extends AppCompatActivity {
         return matcher.matches();
 
 
-}
+
+    }
 
     public boolean emailValidation(String email) {
         String emailInput = etRegEmail.getText().toString();
