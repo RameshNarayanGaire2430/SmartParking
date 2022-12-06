@@ -11,7 +11,9 @@ package ca.friends.and.co.it.smartparking;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -105,8 +107,13 @@ public class BookingFragment extends Fragment {
         contact = view.findViewById(R.id.contact_number);
         date = view.findViewById(R.id.date);
         duration = view.findViewById(R.id.duration);
+
         button = view.findViewById(R.id.book_button);
+
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Booking Details");
+
+
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -150,6 +157,7 @@ public class BookingFragment extends Fragment {
         contact = view.findViewById(R.id.contact_number);
         date = view.findViewById(R.id.date);
         duration = view.findViewById(R.id.duration);
+
         date.addTextChangedListener(new TextWatcher() {
 
             private String current = "";
@@ -161,6 +169,7 @@ public class BookingFragment extends Fragment {
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!s.toString().equals(current)){
@@ -247,6 +256,7 @@ public class BookingFragment extends Fragment {
 
         private String resp;
         ProgressDialog progressDialog;
+
 
         @Override
         protected String doInBackground(String... params) {
