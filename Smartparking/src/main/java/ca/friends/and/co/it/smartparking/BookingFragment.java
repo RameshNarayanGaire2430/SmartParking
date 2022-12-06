@@ -124,17 +124,17 @@ public class BookingFragment extends Fragment {
                 bookingDate = date.getText().toString();
                 bookingDuration = duration.getText().toString();
 
-                reference.child("Customer Name").setValue(bookingName);
-                reference.child("Customer Phone").setValue(bookingContact);
-                reference.child("Booking Date").setValue(bookingDate);
-                reference.child("Duration").setValue(bookingDuration);
+                reference.child(getString(R.string.customer_name)).setValue(bookingName);
+                reference.child(getString(R.string.customer_phone)).setValue(bookingContact);
+                reference.child(getString(R.string.booking_date)).setValue(bookingDate);
+                reference.child(getString(R.string.bookingduration)).setValue(bookingDuration);
 
 
                 //saving data offline
-                editor.putString("BookingName",fullname.getText().toString());
-                editor.putString("BookingContact",contact.getText().toString());
-                editor.putString("BookingDate",date.getText().toString());
-                editor.putString("BookingDuration",duration.getText().toString());
+                editor.putString(getString(R.string.booking_name),fullname.getText().toString());
+                editor.putString(getString(R.string.booking_contact),contact.getText().toString());
+                editor.putString(getString(R.string.bookingdate),date.getText().toString());
+                editor.putString(getString(R.string.booking_duration1),duration.getText().toString());
 
                 resultBundle.putString ("fullname", fullname.getText().toString());
                 resultBundle.putString ("contact", contact.getText().toString());

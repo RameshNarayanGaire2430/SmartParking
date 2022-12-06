@@ -130,6 +130,14 @@
     <string name="checkbox_box">checkbox1</string>
     <string name="remember_me_too">rememberme</string>
     <string name="uncheck">Unchecked</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="customer_phone">Customer Phone</string>
+    <string name="booking_date">Booking Date</string>
+    <string name="bookingduration">Duration</string>
+    <string name="booking_name">BookingName</string>
+    <string name="booking_contact">BookingContact</string>
+    <string name="bookingdate">BookingDate</string>
+    <string name="booking_duration1">BookingDuration</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 
