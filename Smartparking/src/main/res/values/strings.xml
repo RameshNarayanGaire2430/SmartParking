@@ -121,6 +121,15 @@
     <string name="roshan_shrestha">ROSHAN SHRESTHA</string>
     <string name="rushi_bhandari">RUSHI BHANDARI</string>
     <string name="valid_email">Valid email</string>
+    <string name="checkbox1">checkbox1</string>
+    <string name="rememberMe">remember</string>
+    <string name="please_in_sing">Please Sign in</string>
+    <string name="checkbox">checkbox1</string>
+    <string name="remember_me_2">rememberme</string>
+    <string name="checked">Checked</string>
+    <string name="checkbox_box">checkbox1</string>
+    <string name="remember_me_too">rememberme</string>
+    <string name="uncheck">Unchecked</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 

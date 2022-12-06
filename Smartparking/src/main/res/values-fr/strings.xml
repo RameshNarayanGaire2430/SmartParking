@@ -107,6 +107,10 @@
     <string name="message1">Message</string>
     <string name="viber">Viber</string>
     <string name="collaborators">Collaborators</string>
+    <string name="checkbox1">checkbox1</string>
+    <string name="rememberMe">remember</string>
+    <string name="please_in_sing">Please Sign in</string>
+    <string name="checkbox">checkbox1</string>
 
 
 </resources>

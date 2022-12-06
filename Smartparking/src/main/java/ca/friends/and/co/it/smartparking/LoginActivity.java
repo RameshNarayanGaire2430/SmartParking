@@ -68,14 +68,14 @@ public class LoginActivity extends AppCompatActivity {
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this,gso);
 
-        SharedPreferences preferences1 = getSharedPreferences("checkbox1",MODE_PRIVATE);
-        String checkbox1 = preferences1.getString("rememberme", "");
+        SharedPreferences preferences1 = getSharedPreferences(getString(R.string.checkbox1),MODE_PRIVATE);
+        String checkbox1 = preferences1.getString(getString(R.string.rememberMe), "");
         if(checkbox1.equals("true")){
             Intent intent = new Intent(LoginActivity.this, MainActivity.class );
             startActivity(intent);
         }
         else{
-            Toast.makeText(this, "Please Sign in", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.please_in_sing, Toast.LENGTH_SHORT).show();
         }
 
 
@@ -91,19 +91,19 @@ public class LoginActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(compoundButton.isChecked()){
 
-                    SharedPreferences preferences1 = getSharedPreferences("checkbox1", MODE_PRIVATE);
+                    SharedPreferences preferences1 = getSharedPreferences(getString(R.string.checkbox), MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences1.edit();
-                    editor.putString("rememberme", "true");
+                    editor.putString(getString(R.string.remember_me_2), "true");
                     editor.apply();
-                    Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, R.string.checked, Toast.LENGTH_SHORT).show();
                 }
                 else if(!compoundButton.isChecked()){
 
-                    SharedPreferences preferences1 = getSharedPreferences("checkbox1", MODE_PRIVATE);
+                    SharedPreferences preferences1 = getSharedPreferences(getString(R.string.checkbox_box), MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences1.edit();
-                    editor.putString("rememberme", "false");
+                    editor.putString(getString(R.string.remember_me_too), "false");
                     editor.apply();
-                    Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, R.string.uncheck, Toast.LENGTH_SHORT).show();
 
                 }
 
