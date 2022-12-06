@@ -164,7 +164,7 @@ public class FragmentSettings extends Fragment {
                 passwordResetDialog.create().show();
             }
         });
-
+        
         enableNightMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
