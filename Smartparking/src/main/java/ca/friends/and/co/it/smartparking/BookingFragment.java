@@ -31,7 +31,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -51,7 +50,7 @@ public class BookingFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private static final int MY_PERMISSIONS_REQUEST_SMS =1;
     View view;
     Button button;
     EditText fullname;
@@ -143,7 +142,7 @@ public class BookingFragment extends Fragment {
                 AsyncTaskRunner runner = new AsyncTaskRunner();
                 String sleepTime = "3";
                 runner.execute(sleepTime);
-                sendSMSMessage();
+                checkForPermissions();
             }
         });
     }
@@ -228,6 +227,19 @@ public class BookingFragment extends Fragment {
         });
         return view;
     }
+    private void checkForPermissions(){
+        if (ActivityCompat.checkSelfPermission(getContext(),
+                Manifest.permission.SEND_SMS) !=
+                PackageManager.PERMISSION_GRANTED) {
+            //
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.SEND_SMS},
+                    MY_PERMISSIONS_REQUEST_SMS);
+        } else {
+            // Permission already granted. Enable the SMS button.
+            sendSMSMessage();
+        }
+    }
 
     protected void sendSMSMessage() {
         //bookingContact = txtphoneNo.getText().toString();
@@ -235,9 +247,13 @@ public class BookingFragment extends Fragment {
 
         String phoneNo = bookingContact;//The phone number you want to text
         String sms= "Smart Parking: \n"+"Here are your booking details\n"+"Name: "+bookingName+"\n"+"Phone number: "+bookingContact+"\n"+"Date: "+bookingDate+"\n"+"Duration: "+bookingDuration+"\nThanks for booking with us! ";//The message you want to text to the phone
+        Uri sms_uri = Uri.parse("smsto:"+phoneNo);
+        Intent sms_intent = new Intent(Intent.ACTION_SENDTO);
+        sms_intent.setData(Uri.parse(phoneNo));
+        sms_intent.putExtra("sms_body",sms);
+        startActivity(sms_intent);
 
-
-        SmsManager.getDefault().sendTextMessage(phoneNo, null, sms, null,null);
+        //SmsManager.getDefault().sendTextMessage(phoneNo, null, sms, null,null);
     }
 
     @Override

@@ -52,6 +52,7 @@ public void test_app_google(){
     onView(isAssignableFrom(EditText.class)).perform(typeText("Rushi123"),pressKey(KeyEvent.KEYCODE_ENTER));
     onView(withId(R.id.btnLogin)).perform(click());
 
+
 }
 
 
