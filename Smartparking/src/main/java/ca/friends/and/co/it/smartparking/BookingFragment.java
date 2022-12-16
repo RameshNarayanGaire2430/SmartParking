@@ -50,7 +50,7 @@ public class BookingFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private static final int MY_PERMISSIONS_REQUEST_SMS =1;
+    private static final int MY_PERMISSIONS_REQUEST_SMS = 1;
     View view;
     Button button;
     EditText fullname;
@@ -96,7 +96,6 @@ public class BookingFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
 
 
-
         }
     }
 
@@ -107,12 +106,11 @@ public class BookingFragment extends Fragment {
         contact = view.findViewById(R.id.contact_number);
         date = view.findViewById(R.id.date);
         duration = view.findViewById(R.id.duration);
-        sharedPreferences = getActivity().getSharedPreferences("Booking details",Context.MODE_PRIVATE);
+        sharedPreferences = getActivity().getSharedPreferences("Booking details", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         button = view.findViewById(R.id.book_button);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Booking Details");
-
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -130,15 +128,15 @@ public class BookingFragment extends Fragment {
 
 
                 //saving data offline
-                editor.putString(getString(R.string.booking_name),fullname.getText().toString());
-                editor.putString(getString(R.string.booking_contact),contact.getText().toString());
-                editor.putString(getString(R.string.bookingdate),date.getText().toString());
-                editor.putString(getString(R.string.booking_duration1),duration.getText().toString());
+                editor.putString(getString(R.string.booking_name), fullname.getText().toString());
+                editor.putString(getString(R.string.booking_contact), contact.getText().toString());
+                editor.putString(getString(R.string.bookingdate), date.getText().toString());
+                editor.putString(getString(R.string.booking_duration1), duration.getText().toString());
 
-                resultBundle.putString ("fullname", fullname.getText().toString());
-                resultBundle.putString ("contact", contact.getText().toString());
-                resultBundle.putString ("date", date.getText().toString());
-                resultBundle.putString ("duration", duration.getText().toString());
+                resultBundle.putString("fullname", fullname.getText().toString());
+                resultBundle.putString("contact", contact.getText().toString());
+                resultBundle.putString("date", date.getText().toString());
+                resultBundle.putString("duration", duration.getText().toString());
                 AsyncTaskRunner runner = new AsyncTaskRunner();
                 String sleepTime = "3";
                 runner.execute(sleepTime);
@@ -157,7 +155,7 @@ public class BookingFragment extends Fragment {
 
 
         // Inflate the layout for this fragment
-        view =  inflater.inflate(R.layout.fragment_booking, container, false);
+        view = inflater.inflate(R.layout.fragment_booking, container, false);
         button = view.findViewById(R.id.book_button);
         fullname = view.findViewById(R.id.full_name);
         contact = view.findViewById(R.id.contact_number);
@@ -178,40 +176,40 @@ public class BookingFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!s.toString().equals(current)){
+                if (!s.toString().equals(current)) {
                     String clean = s.toString().replaceAll("[^\\d.]", "");
                     String cleanC = current.replaceAll("[^\\d.]", "");
 
                     int cl = clean.length();
                     int sel = cl;
-                    for (int i=2; i<=cl && i<6; i+=2){
+                    for (int i = 2; i <= cl && i < 6; i += 2) {
                         sel++;
                     }
 
                     if (clean.equals(cleanC)) sel--;
 
-                    if(clean.length()<8){
-                        clean =clean + ddmmyyyy.substring(clean.length());
-                    }else{
-                        int day = Integer.parseInt(clean.substring(0,2));
-                        int mon = Integer.parseInt(clean.substring(2,4));
-                        int year = Integer.parseInt(clean.substring(4,8));
+                    if (clean.length() < 8) {
+                        clean = clean + ddmmyyyy.substring(clean.length());
+                    } else {
+                        int day = Integer.parseInt(clean.substring(0, 2));
+                        int mon = Integer.parseInt(clean.substring(2, 4));
+                        int year = Integer.parseInt(clean.substring(4, 8));
 
                         if (mon > 12) mon = 12;
-                        cal.set(Calendar.MONTH, mon-1);
+                        cal.set(Calendar.MONTH, mon - 1);
 
-                        year = (year < 1900)?1900: (year>2100)?2100: year;
+                        year = (year < 1900) ? 1900 : (year > 2100) ? 2100 : year;
                         cal.set(Calendar.YEAR, year);
 
-                        day = (day > cal.getActualMaximum(Calendar.DATE))? cal.getActualMaximum(Calendar.DATE):day;
+                        day = (day > cal.getActualMaximum(Calendar.DATE)) ? cal.getActualMaximum(Calendar.DATE) : day;
                         clean = String.format("%02d%02d%02d", day, mon, year);
                     }
 
-                    clean = String.format("%s/%s/%s", clean.substring(0,2),
-                            clean.substring(2,4),
-                            clean.substring(4,8));
+                    clean = String.format("%s/%s/%s", clean.substring(0, 2),
+                            clean.substring(2, 4),
+                            clean.substring(4, 8));
 
-                    sel = sel <0 ? 0 : sel;
+                    sel = sel < 0 ? 0 : sel;
                     current = clean;
                     date.setText(current);
                     date.setSelection(sel < current.length() ? sel : current.length());
@@ -227,7 +225,8 @@ public class BookingFragment extends Fragment {
         });
         return view;
     }
-    private void checkForPermissions(){
+
+    private void checkForPermissions() {
         if (ActivityCompat.checkSelfPermission(getContext(),
                 Manifest.permission.SEND_SMS) !=
                 PackageManager.PERMISSION_GRANTED) {
@@ -243,17 +242,20 @@ public class BookingFragment extends Fragment {
 
     protected void sendSMSMessage() {
         //bookingContact = txtphoneNo.getText().toString();
-         message = "Thank you for booking with us!";
+        message = "Thank you for booking with us!";
 
         String phoneNo = bookingContact;//The phone number you want to text
-        String sms= "Smart Parking: \n"+"Here are your booking details\n"+"Name: "+bookingName+"\n"+"Phone number: "+bookingContact+"\n"+"Date: "+bookingDate+"\n"+"Duration: "+bookingDuration+"\nThanks for booking with us! ";//The message you want to text to the phone
-        Uri sms_uri = Uri.parse("smsto:"+phoneNo);
+        String sms = "Smart Parking: \n" + "Here are your booking details\n" + "Name: " + bookingName + "\n" + "Phone number: " + bookingContact + "\n" + "Date: " + bookingDate + "\n" + "Duration: " + bookingDuration + "\nThanks for booking with us! ";//The message you want to text to the phone
+        Uri sms_uri = Uri.parse("smsto:" + phoneNo);
         Intent sms_intent = new Intent(Intent.ACTION_SENDTO);
         sms_intent.setData(Uri.parse(phoneNo));
-        sms_intent.putExtra("sms_body",sms);
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage(bookingContact, null, message, null, null);
+        Toast.makeText(getContext(), "SMS sent.",
+                Toast.LENGTH_LONG).show();
+        sms_intent.putExtra("sms_body", sms);
         startActivity(sms_intent);
 
-        //SmsManager.getDefault().sendTextMessage(phoneNo, null, sms, null,null);
     }
 
     @Override
@@ -262,18 +264,17 @@ public class BookingFragment extends Fragment {
             case 100: {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    SmsManager smsManager = SmsManager.getDefault();
-                    smsManager.sendTextMessage(bookingContact, null, message, null, null);
-                    Toast.makeText(getContext(), "SMS sent.",
-                            Toast.LENGTH_LONG).show();
+                    sendSMSMessage();
                 } else {
                     Toast.makeText(getContext(),
-                            "SMS faild, please try again.", Toast.LENGTH_LONG).show();
+                            "SMS failed, please try again.", Toast.LENGTH_LONG).show();
                     return;
                 }
             }
         }
     }
+
+
 
         private class AsyncTaskRunner extends AsyncTask<String, String, String> {
 
