@@ -9,16 +9,14 @@ package ca.friends.and.co.it.smartparking;
 // single responsibility principle used
 // This java class is only related to booking
 
-import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -30,7 +28,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -140,7 +139,7 @@ public class BookingFragment extends Fragment {
                 AsyncTaskRunner runner = new AsyncTaskRunner();
                 String sleepTime = "3";
                 runner.execute(sleepTime);
-                checkForPermissions();
+
             }
         });
     }
@@ -225,54 +224,28 @@ public class BookingFragment extends Fragment {
         });
         return view;
     }
-
-    private void checkForPermissions() {
-        if (ActivityCompat.checkSelfPermission(getContext(),
-                Manifest.permission.SEND_SMS) !=
-                PackageManager.PERMISSION_GRANTED) {
-            //
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.SEND_SMS},
-                    MY_PERMISSIONS_REQUEST_SMS);
-        } else {
-            // Permission already granted. Enable the SMS button.
-            sendSMSMessage();
+    public void sendNotification(){
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("Booking Notification", "Parking Spot Booked", NotificationManager.IMPORTANCE_HIGH);
+            channel.setDescription("Thanks for booking parking spot with us");
+            NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
         }
+        sendNotificationProcess();
+    }
+    public void sendNotificationProcess(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "Booking Notification");
+        builder.setContentTitle("Smart Parking")
+                .setContentText("Thanks for booking a parking spot with us!")
+                .setSmallIcon((R.mipmap.ic_launcher))
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_HIGH);
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext());
+
+        managerCompat.notify(2,builder.build());
     }
 
-    protected void sendSMSMessage() {
-        //bookingContact = txtphoneNo.getText().toString();
-        message = "Thank you for booking with us!";
 
-        String phoneNo = bookingContact;//The phone number you want to text
-        String sms = "Smart Parking: \n" + "Here are your booking details\n" + "Name: " + bookingName + "\n" + "Phone number: " + bookingContact + "\n" + "Date: " + bookingDate + "\n" + "Duration: " + bookingDuration + "\nThanks for booking with us! ";//The message you want to text to the phone
-        Uri sms_uri = Uri.parse("smsto:" + phoneNo);
-        Intent sms_intent = new Intent(Intent.ACTION_SENDTO);
-        sms_intent.setData(Uri.parse(phoneNo));
-        SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage(bookingContact, null, message, null, null);
-        Toast.makeText(getContext(), "SMS sent.",
-                Toast.LENGTH_LONG).show();
-        sms_intent.putExtra("sms_body", sms);
-        startActivity(sms_intent);
-
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case 100: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    sendSMSMessage();
-                } else {
-                    Toast.makeText(getContext(),
-                            "SMS failed, please try again.", Toast.LENGTH_LONG).show();
-                    return;
-                }
-            }
-        }
-    }
 
 
 
@@ -305,6 +278,7 @@ public class BookingFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             // execution of result of Long time consuming operation
+            sendNotification();
             progressDialog.dismiss();
 
 
