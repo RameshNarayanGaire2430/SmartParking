@@ -5,12 +5,10 @@ package ca.friends.and.co.it.smartparking;
 // Rushi Bhandari N01464259, ONA
 // Komal Bamotra N01426087,ONA
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,10 +17,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -103,8 +97,7 @@ public class SupportFragment extends Fragment {
         callImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Calling", Toast.LENGTH_SHORT).show();
-                makePhoneCall();
+                showAlertDialog();
             }
         });
 
@@ -118,49 +111,62 @@ public class SupportFragment extends Fragment {
 
         return view;
     }
+    private void showAlertDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Want to connect with us?")
+                .setMessage("Call us at +1 4379875581.")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
 
+    }
     private void gotoUrl(String s) {
         Uri uri = Uri.parse(s);
         startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 
 
-    private void makePhoneCall() {
-        String number = "4379875581";
-        if (ContextCompat.checkSelfPermission(getContext(),
-                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(), new String[]{
-                            Manifest.permission.CALL_PHONE}
-                    , REQUEST_CALL);
-        } else {
-            String dial = "tel:" + number;
-            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
-        }
-    }
+//    private void makePhoneCall() {
+//        String number = "4379875581";
+//        if (ContextCompat.checkSelfPermission(getContext(),
+//                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(getActivity(), new String[]{
+//                            Manifest.permission.CALL_PHONE}
+//                    , REQUEST_CALL);
+//        } else {
+//            String dial = "tel:" + number;
+//            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+//        }
+//    }
     // Design pattern used (Builder pattern)
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CALL_PHONE)) {
-
-            new AlertDialog.Builder(getContext())
-                    .setTitle("Permission needed !!")
-                    .setMessage("This permission needed to access your phone")
-                    .setPositiveButton("Allow", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.requestPermissions(getActivity(),
-                                    new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-                        }
-                    })
-                    .setNegativeButton("Deny", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .create().show();
-        } else {
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-        }
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CALL_PHONE)) {
+//
+//            new AlertDialog.Builder(getContext())
+//                    .setTitle("Permission needed !!")
+//                    .setMessage("This permission needed to access your phone")
+//                    .setPositiveButton("Allow", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            ActivityCompat.requestPermissions(getActivity(),
+//                                    new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+//                        }
+//                    })
+//                    .setNegativeButton("Deny", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.dismiss();
+//                        }
+//                    })
+//                    .create().show();
+//        } else {
+//            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+//        }
+//    }
 }
