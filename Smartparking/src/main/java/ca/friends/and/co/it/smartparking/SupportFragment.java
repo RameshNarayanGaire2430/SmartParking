@@ -130,43 +130,4 @@ public class SupportFragment extends Fragment {
         startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 
-
-//    private void makePhoneCall() {
-//        String number = "4379875581";
-//        if (ContextCompat.checkSelfPermission(getContext(),
-//                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(getActivity(), new String[]{
-//                            Manifest.permission.CALL_PHONE}
-//                    , REQUEST_CALL);
-//        } else {
-//            String dial = "tel:" + number;
-//            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
-//        }
-//    }
-    // Design pattern used (Builder pattern)
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CALL_PHONE)) {
-//
-//            new AlertDialog.Builder(getContext())
-//                    .setTitle("Permission needed !!")
-//                    .setMessage("This permission needed to access your phone")
-//                    .setPositiveButton("Allow", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            ActivityCompat.requestPermissions(getActivity(),
-//                                    new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-//                        }
-//                    })
-//                    .setNegativeButton("Deny", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            dialog.dismiss();
-//                        }
-//                    })
-//                    .create().show();
-//        } else {
-//            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-//        }
-//    }
 }
