@@ -14,10 +14,10 @@
             android:icon="@drawable/ic_baseline_bookmark_added_24"
             android:title="@string/item_booking" />
 
-        <item
+        <!--<item
             android:id="@+id/nav_booking_detail"
             android:icon="@drawable/ic_baseline_library_books_24"
-            android:title="@string/item_booking_details" />
+            android:title="@string/item_booking_details" />-->
     </group>
 
     <item android:title="@string/item_communication">
