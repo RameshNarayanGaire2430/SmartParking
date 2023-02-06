@@ -9,6 +9,7 @@ package ca.friends.and.co.it.smartparking;
 // single responsibility principle used
 // This java class is only related to booking
 
+import android.app.DatePickerDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
@@ -22,8 +23,13 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -64,7 +70,9 @@ public class BookingFragment extends Fragment {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Bundle resultBundle = new Bundle();
-
+    TextView selectedDate;
+    ImageButton datePickerIv;
+    String[] durationsTime ={"1","2","3","4","5"};
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -108,10 +116,26 @@ public class BookingFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences("Booking details", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         button = view.findViewById(R.id.book_button);
-
+        selectedDate = view.findViewById(R.id.selected_date);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Booking Details");
-
-
+        datePickerIv =view.findViewById(R.id.imageButton);
+        Spinner durationSpinner = view.findViewById(R.id.durationSpinner);
+        ArrayAdapter adapter = new ArrayAdapter(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,durationsTime);
+        adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        durationSpinner.setAdapter(adapter);
+//        durationSpinner.
+//                OnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Toast.makeText(getContext(), "Duration Selected: "+durationsTime[i], Toast.LENGTH_SHORT).show();
+//            }
+//        });
+        datePickerIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                datePicker();
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -244,8 +268,30 @@ public class BookingFragment extends Fragment {
 
         managerCompat.notify(2,builder.build());
     }
+    public void datePicker(){
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
 
+        // on below line we are creating a variable for date picker dialog.
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                // on below line we are passing context.
+                getContext(),
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+                        // on below line we are setting date to our text view.
+                        selectedDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
 
+                    }
+                },
+                // on below line we are passing year,
+                // month and day for selected date in our date picker.
+                year, month, day);
+        datePickerDialog.show();
+    }
 
 
 

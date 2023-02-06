@@ -15,12 +15,32 @@
     tools:context=".BookingFragment">
 
 
+    <Spinner
+        android:id="@+id/durationSpinner"
+        android:layout_width="121dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="276dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="77dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="211dp"
+
+        android:src="@drawable/booking_date_picker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="223dp"
-        android:layout_height="244dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="103dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/parking_booth"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,8 +49,8 @@
         android:id="@+id/editTextTextPersonName"
         android:layout_width="236dp"
         android:layout_height="50dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:text="@string/booking_form"
         android:textAlignment="center"
@@ -44,8 +64,8 @@
         android:id="@+id/full_name"
         android:layout_width="327dp"
         android:layout_height="51dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="364dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="96dp"
         android:background="@drawable/rectangleshape"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
         android:hint="@string/full_name"
@@ -60,44 +80,13 @@
         android:id="@+id/contact_number"
         android:layout_width="327dp"
         android:layout_height="51dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="424dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="160dp"
         android:background="@drawable/rectangleshape"
         android:digits="0123456789+"
         android:hint="@string/contact_number"
         android:inputType="phone"
         android:maxLength="10"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="327dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="484dp"
-        android:background="@drawable/rectangleshape"
-        android:hint="@string/date"
-        android:inputType="date"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/duration"
-        android:layout_width="327dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="544dp"
-        android:background="@drawable/rectangleshape"
-        android:hint="@string/booking_duration"
-        android:inputType="number"
-        android:maxLength="2"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -114,38 +103,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:layout_width="145dp"
-        android:layout_height="241dp"
-        android:layout_marginStart="234dp"
-        android:layout_marginTop="100dp"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="167dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="220dp"
+        android:text="Select the Date:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="P1" />
+    <TextView
+        android:id="@+id/duration_text"
+        android:layout_width="182dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="276dp"
+        android:text="Select the duration:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/radioButton5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="P2" />
+    <TextView
+        android:id="@+id/duration_text2"
+        android:layout_width="182dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="324dp"
+        android:text="Select Parking Spot: "
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/radioButton6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="P3" />
+    <TextView
+        android:id="@+id/selected_date"
+        android:layout_width="115dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="224dp"
+        android:hint="Selected Date!"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/radioButton7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="P4" />
-    </RadioGroup>
+    <ImageView
+        android:id="@+id/parking_spot_image"
+        android:layout_width="96dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="286dp"
+        android:layout_marginTop="317dp"
+        android:src="@drawable/parking_reserve_booking"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
