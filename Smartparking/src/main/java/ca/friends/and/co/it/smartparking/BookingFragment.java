@@ -10,24 +10,27 @@ package ca.friends.and.co.it.smartparking;
 // This java class is only related to booking
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,12 +69,27 @@ public class BookingFragment extends Fragment {
     String bookingName;
     String bookingContact;
     String bookingDate;
+    Boolean spotSelected = false;
+    Boolean spot1Selected= false;
+    Boolean spot2Selected= false;
+    Boolean spot3Selected= false;
+    Boolean spot4Selected= false;
+    Boolean spot5Selected= false;
+    Boolean spot6Selected= false;
     String bookingDuration;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Bundle resultBundle = new Bundle();
     TextView selectedDate;
     ImageButton datePickerIv;
+    ImageView parkingSpotPicker;
+    Button confirmParkingSpotButton;
+    TextView parkingSpot1;
+    TextView parkingSpot2;
+    TextView parkingSpot3;
+    TextView parkingSpot4;
+    TextView parkingSpot5;
+    TextView parkingSpot6;
     String[] durationsTime ={"1","2","3","4","5"};
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -116,6 +134,7 @@ public class BookingFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences("Booking details", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         button = view.findViewById(R.id.book_button);
+        parkingSpotPicker = view.findViewById(R.id.parking_spot_image);
         selectedDate = view.findViewById(R.id.selected_date);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Booking Details");
         datePickerIv =view.findViewById(R.id.imageButton);
@@ -123,13 +142,83 @@ public class BookingFragment extends Fragment {
         ArrayAdapter adapter = new ArrayAdapter(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,durationsTime);
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         durationSpinner.setAdapter(adapter);
-//        durationSpinner.
-//                OnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Toast.makeText(getContext(), "Duration Selected: "+durationsTime[i], Toast.LENGTH_SHORT).show();
-//            }
-//        });
+
+        parkingSpotPicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog dialog = new Dialog(getContext());
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.parking_spot_picker_layout);
+                confirmParkingSpotButton = dialog.findViewById(R.id.parking_spot_confirm_button);
+                parkingSpot1 = dialog.findViewById(R.id.parking_spot_location1);
+                parkingSpot2 = dialog.findViewById(R.id.parking_spot_location2);
+                parkingSpot3 = dialog.findViewById(R.id.parking_spot_location3);
+                parkingSpot4 = dialog.findViewById(R.id.parking_spot_location4);
+                parkingSpot5 = dialog.findViewById(R.id.parking_spot_location5);
+                parkingSpot6 = dialog.findViewById(R.id.parking_spot_location6);
+                 spotSelected= false;
+                parkingSpot1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(spot1Selected){
+                            parkingSpot1.setBackgroundColor(Color.parseColor("#fa2832"));
+                            spotSelected = true;
+                        }
+                        else parkingSpot1.setBackgroundColor(Color.parseColor("#7af585"));
+
+                        spotSelected = true;
+                    }
+                });
+                parkingSpot2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        parkingSpot2.setBackgroundColor(Color.parseColor("#fa2832"));
+                        spotSelected = true;
+                    }
+                });
+                parkingSpot3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        parkingSpot3.setBackgroundColor(Color.parseColor("#fa2832"));
+                        spotSelected = true;
+                    }
+                });
+                parkingSpot4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        parkingSpot4.setBackgroundColor(Color.parseColor("#fa2832"));
+                        spotSelected = true;
+                    }
+                });
+                parkingSpot5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(spotSelected)
+                        parkingSpot5.setBackgroundColor(Color.parseColor("#fa2832"));
+                        spotSelected = true;
+                    }
+                });
+                parkingSpot6.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        parkingSpot6.setBackgroundColor(Color.parseColor("#fa2832"));
+                        spotSelected = true;
+
+                    }
+                });
+                confirmParkingSpotButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(spotSelected){
+                            dialog.dismiss();
+                        }
+                    }
+                });
+            dialog.show();
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.getWindow().setGravity(Gravity.BOTTOM);
+            }
+        });
         datePickerIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -185,67 +274,67 @@ public class BookingFragment extends Fragment {
         date = view.findViewById(R.id.date);
         duration = view.findViewById(R.id.duration);
 
-        date.addTextChangedListener(new TextWatcher() {
-
-            private String current = "";
-            private String ddmmyyyy = "DDMMYYYY";
-            private Calendar cal = Calendar.getInstance();
-
-
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!s.toString().equals(current)) {
-                    String clean = s.toString().replaceAll("[^\\d.]", "");
-                    String cleanC = current.replaceAll("[^\\d.]", "");
-
-                    int cl = clean.length();
-                    int sel = cl;
-                    for (int i = 2; i <= cl && i < 6; i += 2) {
-                        sel++;
-                    }
-
-                    if (clean.equals(cleanC)) sel--;
-
-                    if (clean.length() < 8) {
-                        clean = clean + ddmmyyyy.substring(clean.length());
-                    } else {
-                        int day = Integer.parseInt(clean.substring(0, 2));
-                        int mon = Integer.parseInt(clean.substring(2, 4));
-                        int year = Integer.parseInt(clean.substring(4, 8));
-
-                        if (mon > 12) mon = 12;
-                        cal.set(Calendar.MONTH, mon - 1);
-
-                        year = (year < 1900) ? 1900 : (year > 2100) ? 2100 : year;
-                        cal.set(Calendar.YEAR, year);
-
-                        day = (day > cal.getActualMaximum(Calendar.DATE)) ? cal.getActualMaximum(Calendar.DATE) : day;
-                        clean = String.format("%02d%02d%02d", day, mon, year);
-                    }
-
-                    clean = String.format("%s/%s/%s", clean.substring(0, 2),
-                            clean.substring(2, 4),
-                            clean.substring(4, 8));
-
-                    sel = sel < 0 ? 0 : sel;
-                    current = clean;
-                    date.setText(current);
-                    date.setSelection(sel < current.length() ? sel : current.length());
-                }
-
-            }
-
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+//        date.addTextChangedListener(new TextWatcher() {
+//
+//            private String current = "";
+//            private String ddmmyyyy = "DDMMYYYY";
+//            private Calendar cal = Calendar.getInstance();
+//
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                if (!s.toString().equals(current)) {
+//                    String clean = s.toString().replaceAll("[^\\d.]", "");
+//                    String cleanC = current.replaceAll("[^\\d.]", "");
+//
+//                    int cl = clean.length();
+//                    int sel = cl;
+//                    for (int i = 2; i <= cl && i < 6; i += 2) {
+//                        sel++;
+//                    }
+//
+//                    if (clean.equals(cleanC)) sel--;
+//
+//                    if (clean.length() < 8) {
+//                        clean = clean + ddmmyyyy.substring(clean.length());
+//                    } else {
+//                        int day = Integer.parseInt(clean.substring(0, 2));
+//                        int mon = Integer.parseInt(clean.substring(2, 4));
+//                        int year = Integer.parseInt(clean.substring(4, 8));
+//
+//                        if (mon > 12) mon = 12;
+//                        cal.set(Calendar.MONTH, mon - 1);
+//
+//                        year = (year < 1900) ? 1900 : (year > 2100) ? 2100 : year;
+//                        cal.set(Calendar.YEAR, year);
+//
+//                        day = (day > cal.getActualMaximum(Calendar.DATE)) ? cal.getActualMaximum(Calendar.DATE) : day;
+//                        clean = String.format("%02d%02d%02d", day, mon, year);
+//                    }
+//
+//                    clean = String.format("%s/%s/%s", clean.substring(0, 2),
+//                            clean.substring(2, 4),
+//                            clean.substring(4, 8));
+//
+//                    sel = sel < 0 ? 0 : sel;
+//                    current = clean;
+//                    date.setText(current);
+//                    date.setSelection(sel < current.length() ? sel : current.length());
+//                }
+//
+//            }
+//
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
         return view;
     }
     public void sendNotification(){
