@@ -193,8 +193,9 @@ public class BookingFragment extends Fragment {
                 parkingSpot5.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(spotSelected)
-                        parkingSpot5.setBackgroundColor(Color.parseColor("#fa2832"));
+                        if(spotSelected) {
+                            parkingSpot5.setBackgroundColor(Color.parseColor("#fa2832"));
+                        }
                         spotSelected = true;
                     }
                 });
