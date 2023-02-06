@@ -231,8 +231,8 @@ public class BookingFragment extends Fragment {
             public void onClick(View view) {
                 bookingName = fullname.getText().toString();
                 bookingContact = contact.getText().toString();
-                bookingDate = date.getText().toString();
-                bookingDuration = duration.getText().toString();
+                bookingDate = selectedDate.getText().toString();
+                bookingDuration = durationSpinner.toString();
 
                 reference.child(getString(R.string.customer_name)).setValue(bookingName);
                 reference.child(getString(R.string.customer_phone)).setValue(bookingContact);
@@ -243,13 +243,13 @@ public class BookingFragment extends Fragment {
                 //saving data offline
                 editor.putString(getString(R.string.booking_name), fullname.getText().toString());
                 editor.putString(getString(R.string.booking_contact), contact.getText().toString());
-                editor.putString(getString(R.string.bookingdate), date.getText().toString());
-                editor.putString(getString(R.string.booking_duration1), duration.getText().toString());
+                editor.putString(getString(R.string.bookingdate), selectedDate.getText().toString());
+                editor.putString(getString(R.string.booking_duration1), durationSpinner.toString());
 
                 resultBundle.putString("fullname", fullname.getText().toString());
                 resultBundle.putString("contact", contact.getText().toString());
-                resultBundle.putString("date", date.getText().toString());
-                resultBundle.putString("duration", duration.getText().toString());
+                resultBundle.putString("date", selectedDate.getText().toString());
+                resultBundle.putString("duration", durationSpinner.toString());
                 AsyncTaskRunner runner = new AsyncTaskRunner();
                 String sleepTime = "3";
                 runner.execute(sleepTime);
