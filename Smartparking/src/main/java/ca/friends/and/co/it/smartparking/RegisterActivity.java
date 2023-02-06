@@ -77,8 +77,8 @@ public class RegisterActivity extends AppCompatActivity {
                 etRegEmail.requestFocus();
             }else if (emailValidation(email)) {
                 etRegEmail.setError("Please enter a valid email address");
-                etRegEmail.requestFocus();
-            }else if (isValidPassword(password)) {
+                etRegEmail.requestFocus();}
+            else if (isValidPassword(password)) {
                 etRegPassword.setError("Please enter at least !@#$% ... and at least one Capital letter");
                 etRegPassword.requestFocus();
             } else if (TextUtils.isEmpty(password)) {
@@ -139,7 +139,7 @@ public class RegisterActivity extends AppCompatActivity {
             etRegEmail.setTextColor(Color.BLACK);
             return true;
         } else{
-            Toast.makeText(this, R.string.valid_email, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.Invalid_email, Toast.LENGTH_SHORT).show();
             etRegEmail.setTextColor(Color.RED);
             return false;
         }

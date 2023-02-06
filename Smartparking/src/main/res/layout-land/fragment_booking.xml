@@ -9,16 +9,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bookingFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/bookingFragment"
     tools:context=".BookingFragment">
 
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="281dp"
-        android:layout_height="158dp"
+        android:layout_width="159dp"
+        android:layout_height="157dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="64dp"
         android:src="@drawable/parking_booth"
@@ -107,6 +107,39 @@
         android:text="@string/book"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:layout_width="111dp"
+        android:layout_height="157dp"
+        android:layout_marginStart="186dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:text="P1" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="P2" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:text="P3" />
+
+        <RadioButton
+            android:id="@+id/radioButton8"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:text="P4" />
+    </RadioGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
