@@ -1,4 +1,4 @@
-package ca.friends.and.co.it.smartparking;
+package ca.friends.and.co.it.SmartParking;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;

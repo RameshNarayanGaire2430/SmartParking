@@ -1,4 +1,4 @@
-package ca.friends.and.co.it.smartparking;
+package ca.friends.and.co.it.SmartParking;
 
 
 //Ramesh Narayan Gaire N01452430, ONA
@@ -19,7 +19,6 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

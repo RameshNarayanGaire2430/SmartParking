@@ -1,4 +1,4 @@
-package ca.friends.and.co.it.smartparking;
+package ca.friends.and.co.it.SmartParking;
 
 import org.junit.Test;
 

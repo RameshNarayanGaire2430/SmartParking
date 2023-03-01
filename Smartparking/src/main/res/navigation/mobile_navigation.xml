@@ -7,40 +7,40 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="ca.friends.and.co.it.smartparking.HomeFragment"
+        android:name="ca.friends.and.co.it.SmartParking.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
 
     <fragment
         android:id="@+id/nav_booking"
-        android:name="ca.friends.and.co.it.smartparking.BookingFragment"
+        android:name="ca.friends.and.co.it.SmartParking.BookingFragment"
         android:label="@string/booking"
         tools:layout="@layout/fragment_booking" />
 
 
     <fragment
         android:id="@+id/nav_booking_detail"
-        android:name="ca.friends.and.co.it.smartparking.BookingDetailFragment"
+        android:name="ca.friends.and.co.it.SmartParking.BookingDetailFragment"
         android:label="@string/booking_details"
         tools:layout="@layout/fragment_booking_detail" />
 
     <fragment
         android:id="@+id/nav_support"
-        android:name="ca.friends.and.co.it.smartparking.SupportFragment"
+        android:name="ca.friends.and.co.it.SmartParking.SupportFragment"
         android:label="@string/support"
         tools:layout="@layout/fragment_support" />
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="ca.friends.and.co.it.smartparking.ShareFragment"
+        android:name="ca.friends.and.co.it.SmartParking.ShareFragment"
         android:label="@string/share"
         tools:layout="@layout/fragment_share" />
 
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="ca.friends.and.co.it.smartparking.FragmentSettings"
+        android:name="ca.friends.and.co.it.SmartParking.FragmentSettings"
         android:label="@string/settings"
         tools:layout="@layout/fragment_settings" />
 

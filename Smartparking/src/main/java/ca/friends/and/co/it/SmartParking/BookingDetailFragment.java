@@ -1,4 +1,4 @@
-package ca.friends.and.co.it.smartparking;
+package ca.friends.and.co.it.SmartParking;
 
 //Ramesh Narayan Gaire N01452430, ONA
 //Roshan Shrestha N01457532, ONA
@@ -17,9 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
 
 import com.google.android.material.snackbar.Snackbar;
 

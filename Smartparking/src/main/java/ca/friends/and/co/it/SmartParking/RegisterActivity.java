@@ -1,4 +1,4 @@
-package ca.friends.and.co.it.smartparking;
+package ca.friends.and.co.it.SmartParking;
 
 //Ramesh Narayan Gaire N01452430, ONA
 //Roshan Shrestha N01457532, ONA
@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +25,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

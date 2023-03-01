@@ -1,4 +1,4 @@
-package ca.friends.and.co.it.smartparking;
+package ca.friends.and.co.it.SmartParking;
 
 //Ramesh Narayan Gaire N01452430, ONA
 //Roshan Shrestha N01457532, ONA

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'ca.friends.and.co.it.smartparking'
+    namespace 'ca.friends.and.co.it.SmartParking'
     compileSdk 32
 
     defaultConfig {
-        applicationId "ca.friends.and.co.it.smartparking"
+        applicationId "ca.friends.and.co.it.SmartParking"
         minSdk 27
         targetSdk 32
         versionCode 4

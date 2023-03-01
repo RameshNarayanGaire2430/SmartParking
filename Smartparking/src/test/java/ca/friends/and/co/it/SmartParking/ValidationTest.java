@@ -1,9 +1,7 @@
-package ca.friends.and.co.it.smartparking;
+package ca.friends.and.co.it.SmartParking;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
-
-import junit.framework.Assert;
 
 import org.junit.Test;
 
