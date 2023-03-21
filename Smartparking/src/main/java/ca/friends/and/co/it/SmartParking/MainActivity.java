@@ -29,6 +29,8 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
 
+import ca.friends.and.co.it.SmartParking.R;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     public DrawerLayout drawerLayout;

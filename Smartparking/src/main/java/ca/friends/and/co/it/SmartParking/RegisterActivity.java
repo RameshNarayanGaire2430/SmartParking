@@ -28,6 +28,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import ca.friends.and.co.it.SmartParking.R;
+
 public class RegisterActivity extends AppCompatActivity {
 
 

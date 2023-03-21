@@ -47,6 +47,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
+import ca.friends.and.co.it.SmartParking.R;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link BookingFragment#newInstance} factory method to

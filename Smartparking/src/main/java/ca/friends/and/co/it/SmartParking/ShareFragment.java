@@ -23,6 +23,8 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import ca.friends.and.co.it.SmartParking.R;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ShareFragment#newInstance} factory method to

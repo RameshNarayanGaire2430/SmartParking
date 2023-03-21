@@ -33,6 +33,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import ca.friends.and.co.it.SmartParking.R;
+
 public class LoginActivity extends AppCompatActivity {
 
     TextInputEditText etLoginEmail;

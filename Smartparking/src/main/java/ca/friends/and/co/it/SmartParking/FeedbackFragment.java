@@ -28,6 +28,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import ca.friends.and.co.it.SmartParking.R;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FeedbackFragment#newInstance} factory method to

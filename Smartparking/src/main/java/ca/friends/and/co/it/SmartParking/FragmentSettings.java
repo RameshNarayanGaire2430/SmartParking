@@ -43,6 +43,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import ca.friends.and.co.it.SmartParking.R;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FragmentSettings#newInstance} factory method to

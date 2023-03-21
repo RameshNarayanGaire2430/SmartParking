@@ -9,7 +9,7 @@
 ## These sensors will directly detect the useful information to the user side mobile application.
 
 ## As a result of which, they can easily find and reserve a parking slot.
-
+    
 ## To complete this purpose, we are planning to do the following things:
 
 ##	One stand-up in a day every morning to assign and assess the tasks given to the members.
