@@ -96,6 +96,13 @@ public class BookingFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    int numClicksS1 = 1;
+    int numClicksS2 = 1;
+    int numClicksS3 = 1;
+    int numClicksS4 = 1;
+    int numClicksS5 = 1;
+    int numClicksS6 = 1;
+
 
     public BookingFragment() {
         // Required empty public constructor
@@ -162,59 +169,88 @@ public class BookingFragment extends Fragment {
                 parkingSpot1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(spot1Selected){
+                        if(numClicksS1 == 1){
                             parkingSpot1.setBackgroundColor(Color.parseColor("#fa2832"));
-                            spotSelected = true;
+                            numClicksS1 = 2;
                         }
-                        else parkingSpot1.setBackgroundColor(Color.parseColor("#7af585"));
-
-                        spotSelected = true;
+                        else if(numClicksS1 == 2){
+                            parkingSpot1.setBackgroundColor(Color.parseColor("#7af585"));
+                            numClicksS1 =1;
+                        }
                     }
                 });
                 parkingSpot2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        parkingSpot2.setBackgroundColor(Color.parseColor("#fa2832"));
-                        spotSelected = true;
+                        if(numClicksS2 == 1){
+                            parkingSpot2.setBackgroundColor(Color.parseColor("#fa2832"));
+                            numClicksS2 = 2;
+                        }
+                        else if(numClicksS2 == 2){
+                            parkingSpot2.setBackgroundColor(Color.parseColor("#7af585"));
+                            numClicksS2 =1;
+                        }
                     }
                 });
                 parkingSpot3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        parkingSpot3.setBackgroundColor(Color.parseColor("#fa2832"));
-                        spotSelected = true;
+                        if(numClicksS3 == 1){
+                            parkingSpot3.setBackgroundColor(Color.parseColor("#fa2832"));
+                            numClicksS3 = 2;
+                        }
+                        else if(numClicksS3 == 2){
+                            parkingSpot3.setBackgroundColor(Color.parseColor("#7af585"));
+                            numClicksS3 =1;
+                        }
                     }
                 });
                 parkingSpot4.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        parkingSpot4.setBackgroundColor(Color.parseColor("#fa2832"));
-                        spotSelected = true;
+                        if(numClicksS4 == 1){
+                            parkingSpot4.setBackgroundColor(Color.parseColor("#fa2832"));
+                            numClicksS4 = 2;
+                        }
+                        else if(numClicksS4 == 2){
+                            parkingSpot4.setBackgroundColor(Color.parseColor("#7af585"));
+                            numClicksS4 =1;
+                        }
                     }
                 });
                 parkingSpot5.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(spotSelected) {
+                        if(numClicksS5 == 1){
                             parkingSpot5.setBackgroundColor(Color.parseColor("#fa2832"));
+                            numClicksS5 = 2;
                         }
-                        spotSelected = true;
+                        else if(numClicksS5 == 2){
+                            parkingSpot5.setBackgroundColor(Color.parseColor("#7af585"));
+                            numClicksS5 =1;
+                        }
                     }
                 });
                 parkingSpot6.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        parkingSpot6.setBackgroundColor(Color.parseColor("#fa2832"));
-                        spotSelected = true;
+                        if(numClicksS6 == 1){
+                            parkingSpot6.setBackgroundColor(Color.parseColor("#fa2832"));
+                            numClicksS6 = 2;
+                        }
+                        else if(numClicksS6 == 2){
+                            parkingSpot6.setBackgroundColor(Color.parseColor("#7af585"));
+                            numClicksS6 =1;
+                        }
 
                     }
                 });
                 confirmParkingSpotButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(spotSelected){
+
                             dialog.dismiss();
-                        }
+
                     }
                 });
             dialog.show();
