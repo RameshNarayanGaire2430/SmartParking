@@ -21,10 +21,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import ca.friends.and.co.it.SmartParking.R;
 
@@ -43,6 +49,8 @@ public class HomeFragment extends Fragment {
     TextView feedbackHome;
     TextView supportHome;
     TextView shareHome;
+
+    TextView textView18;
 
     FloatingActionButton button;
 
@@ -105,6 +113,26 @@ public class HomeFragment extends Fragment {
         feedbackHome = view.findViewById(R.id.feedback_home);
         supportHome = view.findViewById(R.id.support_home);
         shareHome = view.findViewById(R.id.share_home);
+
+        textView18 = view.findViewById(R.id.textView18);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("IR sensor/Space");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                Long s = (Long) snapshot.getValue();
+                textView18.setText(""+s);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
         button=view.findViewById(R.id.fab_btn);
