@@ -68,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         gsc = GoogleSignIn.getClient(this,gso);
 
         SharedPreferences preferences1 = getSharedPreferences(getString(R.string.checkbox1),MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences1.edit();
         String checkbox1 = preferences1.getString(getString(R.string.rememberMe), "");
         if(checkbox1.equals("true")){
             Intent intent = new Intent(LoginActivity.this, MainActivity.class );
@@ -90,16 +91,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(compoundButton.isChecked()){
 
-                    SharedPreferences preferences1 = getSharedPreferences(getString(R.string.checkbox), MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences1.edit();
+
                     editor.putString(getString(R.string.remember_me_2), "true");
                     editor.apply();
                     Toast.makeText(LoginActivity.this, R.string.checked, Toast.LENGTH_SHORT).show();
                 }
                 else if(!compoundButton.isChecked()){
 
-                    SharedPreferences preferences1 = getSharedPreferences(getString(R.string.checkbox_box), MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences1.edit();
+
                     editor.putString(getString(R.string.remember_me_too), "false");
                     editor.apply();
                     Toast.makeText(LoginActivity.this, R.string.uncheck, Toast.LENGTH_SHORT).show();

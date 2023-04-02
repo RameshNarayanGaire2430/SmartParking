@@ -72,12 +72,7 @@ public class BookingFragment extends Fragment {
     String bookingContact;
     String bookingDate;
     Boolean spotSelected = false;
-    Boolean spot1Selected= false;
-    Boolean spot2Selected= false;
-    Boolean spot3Selected= false;
-    Boolean spot4Selected= false;
-    Boolean spot5Selected= false;
-    Boolean spot6Selected= false;
+
     String bookingDuration;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -92,6 +87,7 @@ public class BookingFragment extends Fragment {
     TextView parkingSpot4;
     TextView parkingSpot5;
     TextView parkingSpot6;
+    TextView parkingSpotNumber;
     String[] durationsTime ={"1","2","3","4","5"};
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -102,6 +98,7 @@ public class BookingFragment extends Fragment {
     int numClicksS4 = 1;
     int numClicksS5 = 1;
     int numClicksS6 = 1;
+
 
 
     public BookingFragment() {
@@ -147,115 +144,143 @@ public class BookingFragment extends Fragment {
         selectedDate = view.findViewById(R.id.selected_date);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Booking Details");
         datePickerIv =view.findViewById(R.id.imageButton);
+        spotSelected = false;
+        parkingSpotNumber = view.findViewById(R.id.parking_spot_number);
         Spinner durationSpinner = view.findViewById(R.id.durationSpinner);
         ArrayAdapter adapter = new ArrayAdapter(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,durationsTime);
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         durationSpinner.setAdapter(adapter);
 
+
         parkingSpotPicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Dialog dialog = new Dialog(getContext());
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.parking_spot_picker_layout);
-                confirmParkingSpotButton = dialog.findViewById(R.id.parking_spot_confirm_button);
-                parkingSpot1 = dialog.findViewById(R.id.parking_spot_location1);
-                parkingSpot2 = dialog.findViewById(R.id.parking_spot_location2);
-                parkingSpot3 = dialog.findViewById(R.id.parking_spot_location3);
-                parkingSpot4 = dialog.findViewById(R.id.parking_spot_location4);
-                parkingSpot5 = dialog.findViewById(R.id.parking_spot_location5);
-                parkingSpot6 = dialog.findViewById(R.id.parking_spot_location6);
-                 spotSelected= false;
-                parkingSpot1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(numClicksS1 == 1){
-                            parkingSpot1.setBackgroundColor(Color.parseColor("#fa2832"));
-                            numClicksS1 = 2;
-                        }
-                        else if(numClicksS1 == 2){
-                            parkingSpot1.setBackgroundColor(Color.parseColor("#7af585"));
-                            numClicksS1 =1;
-                        }
-                    }
-                });
-                parkingSpot2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(numClicksS2 == 1){
-                            parkingSpot2.setBackgroundColor(Color.parseColor("#fa2832"));
-                            numClicksS2 = 2;
-                        }
-                        else if(numClicksS2 == 2){
-                            parkingSpot2.setBackgroundColor(Color.parseColor("#7af585"));
-                            numClicksS2 =1;
-                        }
-                    }
-                });
-                parkingSpot3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(numClicksS3 == 1){
-                            parkingSpot3.setBackgroundColor(Color.parseColor("#fa2832"));
-                            numClicksS3 = 2;
-                        }
-                        else if(numClicksS3 == 2){
-                            parkingSpot3.setBackgroundColor(Color.parseColor("#7af585"));
-                            numClicksS3 =1;
-                        }
-                    }
-                });
-                parkingSpot4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(numClicksS4 == 1){
-                            parkingSpot4.setBackgroundColor(Color.parseColor("#fa2832"));
-                            numClicksS4 = 2;
-                        }
-                        else if(numClicksS4 == 2){
-                            parkingSpot4.setBackgroundColor(Color.parseColor("#7af585"));
-                            numClicksS4 =1;
-                        }
-                    }
-                });
-                parkingSpot5.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(numClicksS5 == 1){
-                            parkingSpot5.setBackgroundColor(Color.parseColor("#fa2832"));
-                            numClicksS5 = 2;
-                        }
-                        else if(numClicksS5 == 2){
-                            parkingSpot5.setBackgroundColor(Color.parseColor("#7af585"));
-                            numClicksS5 =1;
-                        }
-                    }
-                });
-                parkingSpot6.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(numClicksS6 == 1){
-                            parkingSpot6.setBackgroundColor(Color.parseColor("#fa2832"));
-                            numClicksS6 = 2;
-                        }
-                        else if(numClicksS6 == 2){
-                            parkingSpot6.setBackgroundColor(Color.parseColor("#7af585"));
-                            numClicksS6 =1;
-                        }
+                if(!spotSelected) {
+                    final Dialog dialog = new Dialog(getContext());
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setContentView(R.layout.parking_spot_picker_layout);
+                    confirmParkingSpotButton = dialog.findViewById(R.id.parking_spot_confirm_button);
+                    parkingSpot1 = dialog.findViewById(R.id.parking_spot_location1);
+                    parkingSpot2 = dialog.findViewById(R.id.parking_spot_location2);
+                    parkingSpot3 = dialog.findViewById(R.id.parking_spot_location3);
+                    parkingSpot4 = dialog.findViewById(R.id.parking_spot_location4);
+                    parkingSpot5 = dialog.findViewById(R.id.parking_spot_location5);
+                    parkingSpot6 = dialog.findViewById(R.id.parking_spot_location6);
 
-                    }
-                });
-                confirmParkingSpotButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+                    parkingSpot1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (numClicksS1 == 1) {
+                                parkingSpot1.setBackgroundColor(Color.parseColor("#fa2832"));
+                                numClicksS1 = 2;
+                            } else if (numClicksS1 == 2) {
+                                parkingSpot1.setBackgroundColor(Color.parseColor("#7af585"));
+                                numClicksS1 = 1;
+                            }
+                        }
+                    });
+                    parkingSpot2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (numClicksS2 == 1) {
+                                parkingSpot2.setBackgroundColor(Color.parseColor("#fa2832"));
+                                numClicksS2 = 2;
+                            } else if (numClicksS2 == 2) {
+                                parkingSpot2.setBackgroundColor(Color.parseColor("#7af585"));
+                                numClicksS2 = 1;
+                            }
+                        }
+                    });
+                    parkingSpot3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (numClicksS3 == 1) {
+                                parkingSpot3.setBackgroundColor(Color.parseColor("#fa2832"));
+                                numClicksS3 = 2;
+                            } else if (numClicksS3 == 2) {
+                                parkingSpot3.setBackgroundColor(Color.parseColor("#7af585"));
+                                numClicksS3 = 1;
+                            }
+                        }
+                    });
+                    parkingSpot4.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (numClicksS4 == 1) {
+                                parkingSpot4.setBackgroundColor(Color.parseColor("#fa2832"));
+                                numClicksS4 = 2;
+                            } else if (numClicksS4 == 2) {
+                                parkingSpot4.setBackgroundColor(Color.parseColor("#7af585"));
+                                numClicksS4 = 1;
+                            }
+                        }
+                    });
+                    parkingSpot5.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (numClicksS5 == 1) {
+                                parkingSpot5.setBackgroundColor(Color.parseColor("#fa2832"));
+                                numClicksS5 = 2;
+                            } else if (numClicksS5 == 2) {
+                                parkingSpot5.setBackgroundColor(Color.parseColor("#7af585"));
+                                numClicksS5 = 1;
+                            }
+                        }
+                    });
+                    parkingSpot6.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (numClicksS6 == 1) {
+                                parkingSpot6.setBackgroundColor(Color.parseColor("#fa2832"));
+                                numClicksS6 = 2;
+                            } else if (numClicksS6 == 2) {
+                                parkingSpot6.setBackgroundColor(Color.parseColor("#7af585"));
+                                numClicksS6 = 1;
+                            }
 
-                            dialog.dismiss();
+                        }
+                    });
+                    confirmParkingSpotButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (numClicksS1 == 2 || numClicksS2 == 2 || numClicksS3 == 2 || numClicksS4 == 2 | numClicksS5 == 2 || numClicksS6 == 2) {
+                                if (numClicksS1 == 2) {
 
-                    }
-                });
-            dialog.show();
-            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-            dialog.getWindow().setGravity(Gravity.BOTTOM);
+                                    editor.putInt("Parking Spot Selected", 1);
+                                    editor.commit();
+                                } else if (numClicksS2 == 2) {
+                                    editor.putInt("Parking Spot Selected", 2);
+                                    editor.commit();
+                                } else if (numClicksS3 == 2) {
+                                    editor.putInt("Parking Spot Selected", 3);
+                                    editor.commit();
+                                } else if (numClicksS4 == 2) {
+                                    editor.putInt("Parking Spot Selected", 4);
+                                    editor.commit();
+                                } else if (numClicksS5 == 2) {
+                                    editor.putInt("Parking Spot Selected", 5);
+                                    editor.commit();
+                                } else if (numClicksS6 == 2) {
+                                    editor.putInt("Parking Spot Selected", 6);
+                                    editor.commit();
+                                }
+                                spotSelected = true;
+                                int spotnum = sharedPreferences.getInt("Parking Spot Selected", 0);
+                                //parkingSpotNumber.setText(spotnum);
+                                Toast.makeText(getContext(), "Parking Sport Selected: " + spotnum, Toast.LENGTH_LONG).show();
+
+                                dialog.dismiss();
+                            } else {
+                                Toast.makeText(getContext(), "Please select atleast one spot", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                    dialog.show();
+                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.getWindow().setGravity(Gravity.BOTTOM);
+                }else{
+                    Toast.makeText(getContext(), "You have already selected a spot", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         datePickerIv.setOnClickListener(new View.OnClickListener() {
