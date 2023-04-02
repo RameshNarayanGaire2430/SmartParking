@@ -6,12 +6,14 @@ package ca.friends.and.co.it.SmartParking;
 // Komal Bamotra N01426087,ONA
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashScreen extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
