@@ -164,8 +164,8 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="148dp"
-        android:layout_height="61dp"
+        android:layout_width="261dp"
+        android:layout_height="74dp"
         android:layout_marginStart="14dp"
         android:layout_marginTop="491dp"
         android:background="@drawable/gate_arm"
@@ -176,12 +176,14 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="561dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="576dp"
         android:text="Note: Only use it when the gate arm does not open"
         android:textColor="@color/black"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,6 +34,9 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.TimePickerDialog;
+import android.widget.TimePicker;
+import java.util.Calendar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,6 +58,9 @@ import ca.friends.and.co.it.SmartParking.R;
  * create an instance of this fragment.
  */
 public class BookingFragment extends Fragment {
+
+    private Button pickTimeBtn;
+    private TextView selectedTimeTV;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -122,6 +128,7 @@ public class BookingFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
