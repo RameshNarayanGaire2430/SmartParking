@@ -266,7 +266,7 @@ public class BookingFragment extends Fragment {
                                 }
                                 spotSelected = true;
                                 int spotnum = sharedPreferences.getInt("Parking Spot Selected", 0);
-                                //parkingSpotNumber.setText(spotnum);
+                                parkingSpotNumber.setText("Spot Number: "+spotnum);
                                 Toast.makeText(getContext(), "Parking Sport Selected: " + spotnum, Toast.LENGTH_LONG).show();
 
                                 dialog.dismiss();
@@ -297,11 +297,10 @@ public class BookingFragment extends Fragment {
                 bookingDate = selectedDate.getText().toString();
                 bookingDuration = durationSpinner.toString();
 
-                reference.child(getString(R.string.customer_name)).setValue(bookingName);
-                reference.child(getString(R.string.customer_phone)).setValue(bookingContact);
-                reference.child(getString(R.string.booking_date)).setValue(bookingDate);
-                reference.child(getString(R.string.bookingduration)).setValue(bookingDuration);
-
+                reference.child("User Data").child("Name").setValue(fullname.getText().toString());
+                reference.child("User Data").child("contact").setValue(contact.getText().toString());
+                reference.child("User Data").child("Date").setValue(date.getText().toString());
+                reference.child("User Data").child("SpotNumber").setValue(parkingSpotNumber.getText().toString());
 
                 //saving data offline
                 editor.putString(getString(R.string.booking_name), fullname.getText().toString());
@@ -313,6 +312,8 @@ public class BookingFragment extends Fragment {
                 resultBundle.putString("contact", contact.getText().toString());
                 resultBundle.putString("date", selectedDate.getText().toString());
                 resultBundle.putString("duration", durationSpinner.toString());
+
+
                 AsyncTaskRunner runner = new AsyncTaskRunner();
                 String sleepTime = "3";
                 runner.execute(sleepTime);
