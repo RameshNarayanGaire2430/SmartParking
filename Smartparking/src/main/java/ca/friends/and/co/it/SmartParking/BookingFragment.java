@@ -299,7 +299,7 @@ public class BookingFragment extends Fragment {
 
                 reference.child("User Data").child("Name").setValue(fullname.getText().toString());
                 reference.child("User Data").child("contact").setValue(contact.getText().toString());
-                reference.child("User Data").child("Date").setValue(date.getText().toString());
+//                reference.child("User Data").child("Date").setValue(date.getText().toString());
                 reference.child("User Data").child("SpotNumber").setValue(parkingSpotNumber.getText().toString());
 
                 //saving data offline
