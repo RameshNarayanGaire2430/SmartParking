@@ -45,8 +45,11 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
@@ -80,7 +83,7 @@ public class BookingFragment extends Fragment {
     String bookingContact;
     String bookingDate;
     Boolean spotSelected = false;
-
+TextView datePicker;
     String bookingDuration;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -106,9 +109,22 @@ public class BookingFragment extends Fragment {
     int numClicksS4 = 1;
     int numClicksS5 = 1;
     int numClicksS6 = 1;
-
+    int parkingDuration;
+    int fromHour, fromMinute, toHour, toMinute;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
+    String spot1SelectedDB = "false";
+    String spot2SelectedDB="false";
+    String spot3SelectedDB="false";
+    String spot4SelectedDB="false";
+    String spot5SelectedDB = "false";
+    String spot6SelectedDB = "false";
+    boolean spot1Selectable;
+    boolean spot6Selectable;
+    boolean spot2Selectable;
+    boolean spot3Selectable;
+    boolean spot4Selectable;
+    boolean spot5Selectable;
     public BookingFragment() {
         // Required empty public constructor
     }
@@ -151,6 +167,7 @@ public class BookingFragment extends Fragment {
         button = view.findViewById(R.id.book_button);
         parkingSpotPicker = view.findViewById(R.id.parking_spot_image);
         selectedDate = view.findViewById(R.id.selected_date);
+        datePicker = view.findViewById(R.id.selected_date);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Booking Details");
         datePickerIv =view.findViewById(R.id.imageButton);
         spotSelected = false;
@@ -163,6 +180,57 @@ public class BookingFragment extends Fragment {
         toTimeButton = view.findViewById(R.id.parking_to_time);
         fromTimeTV = view.findViewById(R.id.fromTimeTV);
         toTimeTV = view.findViewById(R.id.toTimeTV);
+
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                spot1SelectedDB = snapshot.child("User Data").child("spot1Selected").toString();
+                spot2SelectedDB = snapshot.child("User Data").child("spot2Selected").toString();
+                spot3SelectedDB = snapshot.child("User Data").child("spot3Selected").toString();
+                spot4SelectedDB = snapshot.child("User Data").child("spot4Selected").toString();
+                spot5SelectedDB = snapshot.child("User Data").child("Spot5Selected").toString();
+                spot6SelectedDB = snapshot.child("User Data").child("spot6Selected").toString();
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        if(spot1SelectedDB.equalsIgnoreCase("true")) {
+            spot1Selectable = false;
+            parkingSpot1.setBackgroundColor(Color.parseColor("#fa2832"));
+        }
+        if(spot2SelectedDB.equalsIgnoreCase("true")) {
+            spot2Selectable = false;
+            parkingSpot2.setBackgroundColor(Color.parseColor("#fa2832"));
+        }
+        if(spot3SelectedDB.equalsIgnoreCase("true")) {
+            spot3Selectable = false;
+            parkingSpot3.setBackgroundColor(Color.parseColor("#fa2832"));
+        }
+        if(spot4SelectedDB.equalsIgnoreCase("true")) {
+            spot4Selectable = false;
+            parkingSpot4.setBackgroundColor(Color.parseColor("#fa2832"));
+        }
+        if(spot5SelectedDB.equalsIgnoreCase("true")) {
+            spot5Selectable = false;
+            parkingSpot5.setBackgroundColor(Color.parseColor("#fa2832"));
+        }
+        if(spot6SelectedDB.equalsIgnoreCase("true")) {
+            spot6Selectable = false;
+            parkingSpot6.setBackgroundColor(Color.parseColor("#fa2832"));
+        }
+       // spot1SelectedDB = reference.child("User Data").getValue("spot1Selected",false);
+//        spot2SelectedDB = sharedPreferences.getBoolean("spot2Selected",false);
+//        spot3SelectedDB = sharedPreferences.getBoolean("spot3Selected",false);
+//        spot4SelectedDB = sharedPreferences.getBoolean("spot4Selected",false);
+//        spot5SelectedDB = sharedPreferences.getBoolean("Spot5Selected",false);
+//        spot6SelectedDB = sharedPreferences.getBoolean("spot6Selected",false);
+
+
 
         fromTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,7 +245,8 @@ public class BookingFragment extends Fragment {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay,
                                                   int minute) {
-
+                                fromHour = hourOfDay;
+                                fromMinute = minute;
                                 fromTimeTV.setText(hourOfDay + ":" + minute);
                             }
                         }, mHour, mMinute, false);
@@ -199,7 +268,8 @@ public class BookingFragment extends Fragment {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay,
                                                   int minute) {
-
+                                toHour = hourOfDay;
+                                toMinute = minute;
                                 toTimeTV.setText(hourOfDay + ":" + minute);
                             }
                         }, mHour, mMinute, false);
@@ -223,76 +293,94 @@ public class BookingFragment extends Fragment {
                     parkingSpot5 = dialog.findViewById(R.id.parking_spot_location5);
                     parkingSpot6 = dialog.findViewById(R.id.parking_spot_location6);
 
-                    parkingSpot1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if (numClicksS1 == 1) {
-                                parkingSpot1.setBackgroundColor(Color.parseColor("#fa2832"));
-                                numClicksS1 = 2;
-                            } else if (numClicksS1 == 2) {
-                                parkingSpot1.setBackgroundColor(Color.parseColor("#7af585"));
-                                numClicksS1 = 1;
+                        parkingSpot1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                    if (numClicksS1 == 1) {
+                                        parkingSpot1.setBackgroundColor(Color.parseColor("#fa2832"));
+                                        numClicksS1 = 2;
+                                    } else if (numClicksS1 == 2) {
+                                        parkingSpot1.setBackgroundColor(Color.parseColor("#7af585"));
+                                        numClicksS1 = 1;
+                                    }
+
+
+                                   // Toast.makeText(getContext(), "Spot is booked already", Toast.LENGTH_SHORT).show();
+
                             }
-                        }
-                    });
+                        });
+
+
+
                     parkingSpot2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if (numClicksS2 == 1) {
-                                parkingSpot2.setBackgroundColor(Color.parseColor("#fa2832"));
-                                numClicksS2 = 2;
-                            } else if (numClicksS2 == 2) {
-                                parkingSpot2.setBackgroundColor(Color.parseColor("#7af585"));
-                                numClicksS2 = 1;
-                            }
+
+                                if (numClicksS2 == 1) {
+                                    parkingSpot2.setBackgroundColor(Color.parseColor("#fa2832"));
+                                    numClicksS2 = 2;
+                                } else if (numClicksS2 == 2) {
+                                    parkingSpot2.setBackgroundColor(Color.parseColor("#7af585"));
+                                    numClicksS2 = 1;
+                                }
+
                         }
                     });
                     parkingSpot3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if (numClicksS3 == 1) {
-                                parkingSpot3.setBackgroundColor(Color.parseColor("#fa2832"));
-                                numClicksS3 = 2;
-                            } else if (numClicksS3 == 2) {
-                                parkingSpot3.setBackgroundColor(Color.parseColor("#7af585"));
-                                numClicksS3 = 1;
-                            }
+
+                                if (numClicksS3 == 1) {
+                                    parkingSpot3.setBackgroundColor(Color.parseColor("#fa2832"));
+                                    numClicksS3 = 2;
+                                } else if (numClicksS3 == 2) {
+                                    parkingSpot3.setBackgroundColor(Color.parseColor("#7af585"));
+                                    numClicksS3 = 1;
+                                }
+
                         }
                     });
                     parkingSpot4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if (numClicksS4 == 1) {
-                                parkingSpot4.setBackgroundColor(Color.parseColor("#fa2832"));
-                                numClicksS4 = 2;
-                            } else if (numClicksS4 == 2) {
-                                parkingSpot4.setBackgroundColor(Color.parseColor("#7af585"));
-                                numClicksS4 = 1;
-                            }
+
+                                if (numClicksS4 == 1) {
+                                    parkingSpot4.setBackgroundColor(Color.parseColor("#fa2832"));
+                                    numClicksS4 = 2;
+                                } else if (numClicksS4 == 2) {
+                                    parkingSpot4.setBackgroundColor(Color.parseColor("#7af585"));
+                                    numClicksS4 = 1;
+                                }
+
                         }
                     });
                     parkingSpot5.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if (numClicksS5 == 1) {
-                                parkingSpot5.setBackgroundColor(Color.parseColor("#fa2832"));
-                                numClicksS5 = 2;
-                            } else if (numClicksS5 == 2) {
-                                parkingSpot5.setBackgroundColor(Color.parseColor("#7af585"));
-                                numClicksS5 = 1;
-                            }
+
+                                if (numClicksS5 == 1) {
+                                    parkingSpot5.setBackgroundColor(Color.parseColor("#fa2832"));
+                                    numClicksS5 = 2;
+                                } else if (numClicksS5 == 2) {
+                                    parkingSpot5.setBackgroundColor(Color.parseColor("#7af585"));
+                                    numClicksS5 = 1;
+                                }
+
                         }
                     });
                     parkingSpot6.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if (numClicksS6 == 1) {
-                                parkingSpot6.setBackgroundColor(Color.parseColor("#fa2832"));
-                                numClicksS6 = 2;
-                            } else if (numClicksS6 == 2) {
-                                parkingSpot6.setBackgroundColor(Color.parseColor("#7af585"));
-                                numClicksS6 = 1;
-                            }
+
+                                if (numClicksS6 == 1) {
+                                    parkingSpot6.setBackgroundColor(Color.parseColor("#fa2832"));
+                                    numClicksS6 = 2;
+                                } else if (numClicksS6 == 2) {
+                                    parkingSpot6.setBackgroundColor(Color.parseColor("#7af585"));
+                                    numClicksS6 = 1;
+                                }
+
 
                         }
                     });
@@ -351,12 +439,17 @@ public class BookingFragment extends Fragment {
                 bookingName = fullname.getText().toString();
                 bookingContact = contact.getText().toString();
                 bookingDate = selectedDate.getText().toString();
-                bookingDuration = durationSpinner.toString();
+                String durBook = durationSpinner.toString().trim();
+                bookingDuration = durBook;
+//                String datePicker = date.getText().toString();
 
                 reference.child("User Data").child("Name").setValue(fullname.getText().toString());
                 reference.child("User Data").child("contact").setValue(contact.getText().toString());
-//                reference.child("User Data").child("Date").setValue(date.getText().toString());
+                reference.child("User Data").child("Date").setValue(selectedDate.getText().toString());
                 reference.child("User Data").child("SpotNumber").setValue(parkingSpotNumber.getText().toString());
+                parkingDuration = (toHour+(toMinute/100)) - (fromHour+ (fromMinute/100));
+                reference.child("Booking Details").child("Duration").setValue(parkingDuration);
+                Toast.makeText(getContext(), "duration: "+parkingDuration, Toast.LENGTH_SHORT).show();
 
                 //saving data offline
                 editor.putString(getString(R.string.booking_name), fullname.getText().toString());

@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +45,7 @@ public class HomeFragment extends Fragment {
     ImageView imageView2;
     ImageView imageView3;
     ImageView imageView4;
+    Button gateArm;
 
     TextView bookHome;
     TextView feedbackHome;
@@ -108,7 +110,7 @@ public class HomeFragment extends Fragment {
         imageView2 = view.findViewById(R.id.support_imagebtn);
         imageView3 = view.findViewById(R.id.share_imagebtn);
         imageView4 = view.findViewById(R.id.feedback_imagebtn);
-
+        gateArm = view.findViewById(R.id.gateArm);
         bookHome = view.findViewById(R.id.book_home);
         feedbackHome = view.findViewById(R.id.feedback_home);
         supportHome = view.findViewById(R.id.support_home);
