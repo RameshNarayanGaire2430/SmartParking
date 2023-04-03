@@ -27,46 +27,64 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
-        android:id="@+id/idTVSelectedTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/idBtnPickTime"
+        android:id="@+id/fromTimeTV"
+        android:layout_width="106dp"
+        android:layout_height="37dp"
+
         android:layout_centerInParent="true"
-        android:layout_margin="20dp"
-        android:gravity="center"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="320dp"
         android:padding="10dp"
         android:text="Time"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/toTimeTV"
+        android:layout_width="106dp"
+        android:layout_height="37dp"
+
+        android:layout_centerInParent="true"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="368dp"
+        android:padding="10dp"
+        android:text="Time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/idBtnPickTime"
-        android:layout_width="152dp"
-        android:layout_height="39dp"
+        android:id="@+id/parking_from_time"
+        android:layout_width="124dp"
+        android:layout_height="41dp"
         android:layout_centerInParent="true"
-        android:layout_margin="20dp"
-        android:layout_marginStart="192dp"
-        android:layout_marginTop="328dp"
-        android:layout_marginEnd="239dp"
-        android:layout_marginBottom="672dp"
-        android:text="Select Time"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="316dp"
+        android:text="Select from Time"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
+        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.879" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/parking_to_time"
+        android:layout_width="124dp"
+        android:layout_height="41dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="364dp"
+        android:text="Select to Time"
+        android:textAllCaps="false"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/durationSpinner"
         android:layout_width="121dp"
         android:layout_height="33dp"
-        android:layout_marginStart="260dp"
+        android:layout_marginStart="220dp"
         android:layout_marginTop="276dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -179,7 +197,7 @@
         android:layout_width="182dp"
         android:layout_height="30dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="424dp"
         android:text="Select Parking Spot: "
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -196,12 +214,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
         android:id="@+id/parking_spot_image"
         android:layout_width="96dp"
         android:layout_height="62dp"
-        android:layout_marginStart="296dp"
-        android:layout_marginTop="368dp"
+        android:layout_marginStart="308dp"
+        android:layout_marginTop="416dp"
         android:src="@drawable/parking_reserve_booking"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -210,11 +229,19 @@
         android:id="@+id/parking_spot_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginStart="201dp"
+        android:layout_marginTop="427dp"
         android:text="Select a spot!"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="59dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="345dp"
+        android:layout_marginTop="280dp"
+        android:text="Hours"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

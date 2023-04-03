@@ -59,8 +59,10 @@ import ca.friends.and.co.it.SmartParking.R;
  */
 public class BookingFragment extends Fragment {
 
-    private Button pickTimeBtn;
-    private TextView selectedTimeTV;
+    Button fromTimeButton;
+    Button toTimeButton;
+    TextView fromTimeTV;
+    TextView toTimeTV;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -105,7 +107,7 @@ public class BookingFragment extends Fragment {
     int numClicksS5 = 1;
     int numClicksS6 = 1;
 
-
+    private int mYear, mMonth, mDay, mHour, mMinute;
 
     public BookingFragment() {
         // Required empty public constructor
@@ -157,6 +159,53 @@ public class BookingFragment extends Fragment {
         ArrayAdapter adapter = new ArrayAdapter(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,durationsTime);
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         durationSpinner.setAdapter(adapter);
+        fromTimeButton = view.findViewById(R.id.parking_from_time);
+        toTimeButton = view.findViewById(R.id.parking_to_time);
+        fromTimeTV = view.findViewById(R.id.fromTimeTV);
+        toTimeTV = view.findViewById(R.id.toTimeTV);
+
+        fromTimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMinute = c.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
+                        new TimePickerDialog.OnTimeSetListener() {
+
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay,
+                                                  int minute) {
+
+                                fromTimeTV.setText(hourOfDay + ":" + minute);
+                            }
+                        }, mHour, mMinute, false);
+                timePickerDialog.show();
+
+
+            }
+        });
+        toTimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMinute = c.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
+                        new TimePickerDialog.OnTimeSetListener() {
+
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay,
+                                                  int minute) {
+
+                                toTimeTV.setText(hourOfDay + ":" + minute);
+                            }
+                        }, mHour, mMinute, false);
+                timePickerDialog.show();
+            }
+        });
 
 
         parkingSpotPicker.setOnClickListener(new View.OnClickListener() {
