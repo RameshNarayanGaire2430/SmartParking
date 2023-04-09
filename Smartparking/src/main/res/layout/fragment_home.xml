@@ -162,16 +162,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/gateArm"
-        android:layout_width="146dp"
-        android:layout_height="84dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="492dp"
-        android:background="@drawable/gate_arm"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
@@ -214,12 +204,22 @@
         android:id="@+id/textView39"
         android:layout_width="174dp"
         android:layout_height="47dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="528dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="448dp"
         android:text="Open Gate Arm forcefully"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/gatearm"
+        android:layout_width="207dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="505dp"
+        android:src="@drawable/gatearm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
