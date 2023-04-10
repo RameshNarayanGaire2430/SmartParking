@@ -10,6 +10,7 @@ package ca.friends.and.co.it.SmartParking;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,6 +34,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import ca.friends.and.co.it.SmartParking.R;
 
@@ -136,7 +140,30 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        gateArm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                final TextView rushiSensorTV = new TextView(getActivity().getApplicationContext());
+                builder.setTitle("Open Parking Entrance");
+                rushiSensorTV.setText("detected");
+                String motionSensor = rushiSensorTV.getText().toString();
+                if(motionSensor.equalsIgnoreCase("detected")){
+                    builder.setMessage("Your car is detecting in Sensor, arm will open now!");
 
+                } else if (motionSensor.equalsIgnoreCase("not Detected")) {
+                    builder.setMessage("Your car is not detected in sensor. \nPlease make your car move forward or backward and then try!");
+
+                }
+                builder.setPositiveButton("Ok",(DialogInterface.OnClickListener) (dialog, which) -> {
+                    // If user click no then dialog box is canceled.
+                    dialog.cancel();
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
+            }
+        });
         button=view.findViewById(R.id.fab_btn);
 
         bookHome.setOnClickListener(new View.OnClickListener() {
