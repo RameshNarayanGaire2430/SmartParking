@@ -29,6 +29,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -72,6 +73,7 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String value = "Detected";
 
     public HomeFragment() {
         // Required empty public constructor
@@ -140,28 +142,52 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        final TextView rushiSensorTV = new TextView(getActivity().getApplicationContext());
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference dbRef = firebaseDatabase.getReference("Motion sensor/");
+
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(!snapshot.exists()) {
+                    String dbValue = snapshot.getValue(String.class);
+                    value = dbValue;
+                }else {
+                    Toast.makeText(getContext(), "Cannot read data from database", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         gateArm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                final TextView rushiSensorTV = new TextView(getActivity().getApplicationContext());
                 builder.setTitle("Open Parking Entrance");
-                rushiSensorTV.setText("detected");
-                String motionSensor = rushiSensorTV.getText().toString();
-                if(motionSensor.equalsIgnoreCase("detected")){
+                if(value.equalsIgnoreCase("detected") && value != null){
                     builder.setMessage("Your car is detecting in Sensor, arm will open now!");
+                    dbRef.child("Servo").setValue("HIGH");
+                    Toast.makeText(getContext(), "ARM OPEN", Toast.LENGTH_SHORT).show();
 
-                } else if (motionSensor.equalsIgnoreCase("not Detected")) {
+                } else if (value.equalsIgnoreCase("not Detected")) {
                     builder.setMessage("Your car is not detected in sensor. \nPlease make your car move forward or backward and then try!");
 
+                }else{
+                    Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
                 }
+
+                //rushiSensorTV.setText("not detected");
+                String motionSensor = rushiSensorTV.getText().toString();
+
                 builder.setPositiveButton("Ok",(DialogInterface.OnClickListener) (dialog, which) -> {
                     // If user click no then dialog box is canceled.
                     dialog.cancel();
                 });
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
-
             }
         });
         button=view.findViewById(R.id.fab_btn);
