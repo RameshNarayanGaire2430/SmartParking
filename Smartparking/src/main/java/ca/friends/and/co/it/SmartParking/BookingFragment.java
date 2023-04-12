@@ -125,6 +125,12 @@ TextView datePicker;
     boolean spot3Selectable;
     boolean spot4Selectable;
     boolean spot5Selectable;
+    Boolean spot1= true;
+    Boolean spot2;
+    Boolean spot3;
+    Boolean spot4;
+    Boolean spot5;
+    Boolean spot6;
     public BookingFragment() {
         // Required empty public constructor
     }
@@ -293,10 +299,39 @@ TextView datePicker;
                     parkingSpot5 = dialog.findViewById(R.id.parking_spot_location5);
                     parkingSpot6 = dialog.findViewById(R.id.parking_spot_location6);
 
+                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                    DatabaseReference dbRef = firebaseDatabase.getReference("Booking Details/User Data");
+                    dbRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                spot1SelectedDB = snapshot.child("spot1Selected").getValue().toString();
+                                spot2SelectedDB = snapshot.child("spot2Selected").getValue().toString();
+                                spot3SelectedDB = snapshot.child("spot3Selected").getValue().toString();
+                                spot4SelectedDB = snapshot.child("spot4Selected").getValue().toString();
+                                spot5SelectedDB = snapshot.child("Spot5Selected").getValue().toString();
+                                spot6SelectedDB = snapshot.child("spot6Selected").getValue().toString();
+                                Toast.makeText(getContext(), "Spot 1: " + spot1SelectedDB, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                    if (spot1SelectedDB.equals("false")){
+                        parkingSpot1.setBackgroundColor(Color.parseColor("#7af585"));
+                        Toast.makeText(getContext(), "false", Toast.LENGTH_SHORT).show();
+                    }else{
+                        parkingSpot1.setBackgroundColor(Color.parseColor("#fa2832"));
+                        Toast.makeText(getContext(), "Setted bg", Toast.LENGTH_SHORT).show();
+                    }
+
                         parkingSpot1.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-
+                                if(spot1SelectedDB.equals("false")) {
                                     if (numClicksS1 == 1) {
                                         parkingSpot1.setBackgroundColor(Color.parseColor("#fa2832"));
                                         numClicksS1 = 2;
@@ -304,47 +339,86 @@ TextView datePicker;
                                         parkingSpot1.setBackgroundColor(Color.parseColor("#7af585"));
                                         numClicksS1 = 1;
                                     }
+                                }
+                                else{
+                                    
+                                    Toast.makeText(getContext(), "Spot is already selected!\nPlease select another spot", Toast.LENGTH_SHORT).show();
+                                }
 
 
-                                   // Toast.makeText(getContext(), "Spot is booked already", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(getContext(), "Spot is booked already", Toast.LENGTH_SHORT).show();
 
                             }
                         });
 
 
 
+
+                    if (spot2SelectedDB.equals("false")){
+                        parkingSpot2.setBackgroundColor(Color.parseColor("#7af585"));
+                        Toast.makeText(getContext(), "false", Toast.LENGTH_SHORT).show();
+                    }else{
+                        parkingSpot2.setBackgroundColor(Color.parseColor("#fa2832"));
+                        Toast.makeText(getContext(), "Setted bg", Toast.LENGTH_SHORT).show();
+                    }
                     parkingSpot2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            if(spot2SelectedDB.equals("false")) {
                                 if (numClicksS2 == 1) {
                                     parkingSpot2.setBackgroundColor(Color.parseColor("#fa2832"));
                                     numClicksS2 = 2;
                                 } else if (numClicksS2 == 2) {
                                     parkingSpot2.setBackgroundColor(Color.parseColor("#7af585"));
                                     numClicksS2 = 1;
-                                }
+                                }}
+                            else{
+
+                                Toast.makeText(getContext(), "Spot is already selected!\nPlease select another spot", Toast.LENGTH_SHORT).show();
+                            }
 
                         }
                     });
+
+
+
+                    if (spot3SelectedDB.equals("false")){
+                        parkingSpot3.setBackgroundColor(Color.parseColor("#7af585"));
+                        Toast.makeText(getContext(), "false", Toast.LENGTH_SHORT).show();
+                    }else{
+                        parkingSpot3.setBackgroundColor(Color.parseColor("#fa2832"));
+                        Toast.makeText(getContext(), "Setted bg", Toast.LENGTH_SHORT).show();
+                    }
                     parkingSpot3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            if(spot3SelectedDB.equals("false")) {
                                 if (numClicksS3 == 1) {
                                     parkingSpot3.setBackgroundColor(Color.parseColor("#fa2832"));
                                     numClicksS3 = 2;
                                 } else if (numClicksS3 == 2) {
                                     parkingSpot3.setBackgroundColor(Color.parseColor("#7af585"));
                                     numClicksS3 = 1;
-                                }
+                                }}
+                                else{
+
+                            Toast.makeText(getContext(), "Spot is already selected!\nPlease select another spot", Toast.LENGTH_SHORT).show();
+                        }
 
                         }
                     });
+
+                    if (spot4SelectedDB.equals("false")){
+                        parkingSpot4.setBackgroundColor(Color.parseColor("#7af585"));
+                        Toast.makeText(getContext(), "false", Toast.LENGTH_SHORT).show();
+                    }else{
+                        parkingSpot4.setBackgroundColor(Color.parseColor("#fa2832"));
+                        Toast.makeText(getContext(), "Setted bg", Toast.LENGTH_SHORT).show();
+                    }
                     parkingSpot4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            if(spot4SelectedDB.equals("false")) {
                                 if (numClicksS4 == 1) {
                                     parkingSpot4.setBackgroundColor(Color.parseColor("#fa2832"));
                                     numClicksS4 = 2;
@@ -352,33 +426,61 @@ TextView datePicker;
                                     parkingSpot4.setBackgroundColor(Color.parseColor("#7af585"));
                                     numClicksS4 = 1;
                                 }
+                            }else{
+
+                                    Toast.makeText(getContext(), "Spot is already selected!\nPlease select another spot", Toast.LENGTH_SHORT).show();
+                                }
 
                         }
                     });
+
+                    if (spot5SelectedDB.equals("false")){
+                        parkingSpot5.setBackgroundColor(Color.parseColor("#7af585"));
+                        Toast.makeText(getContext(), "false", Toast.LENGTH_SHORT).show();
+                    }else{
+                        parkingSpot5.setBackgroundColor(Color.parseColor("#fa2832"));
+                        Toast.makeText(getContext(), "Setted bg", Toast.LENGTH_SHORT).show();
+                    }
                     parkingSpot5.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            if(spot5SelectedDB.equals("false")) {
                                 if (numClicksS5 == 1) {
                                     parkingSpot5.setBackgroundColor(Color.parseColor("#fa2832"));
                                     numClicksS5 = 2;
                                 } else if (numClicksS5 == 2) {
                                     parkingSpot5.setBackgroundColor(Color.parseColor("#7af585"));
                                     numClicksS5 = 1;
-                                }
+                                } }else{
+
+                                Toast.makeText(getContext(), "Spot is already selected!\nPlease select another spot", Toast.LENGTH_SHORT).show();
+                            }
 
                         }
                     });
+
+
+
+                    if (spot6SelectedDB.equals("false")){
+                        parkingSpot6.setBackgroundColor(Color.parseColor("#7af585"));
+                        Toast.makeText(getContext(), "false", Toast.LENGTH_SHORT).show();
+                    }else{
+                        parkingSpot6.setBackgroundColor(Color.parseColor("#fa2832"));
+                        Toast.makeText(getContext(), "Setted bg", Toast.LENGTH_SHORT).show();
+                    }
                     parkingSpot6.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                                if(spot6SelectedDB.equals("false")) {
                                 if (numClicksS6 == 1) {
                                     parkingSpot6.setBackgroundColor(Color.parseColor("#fa2832"));
                                     numClicksS6 = 2;
                                 } else if (numClicksS6 == 2) {
                                     parkingSpot6.setBackgroundColor(Color.parseColor("#7af585"));
                                     numClicksS6 = 1;
+                                } }else{
+
+                                    Toast.makeText(getContext(), "Spot is already selected!\nPlease select another spot", Toast.LENGTH_SHORT).show();
                                 }
 
 

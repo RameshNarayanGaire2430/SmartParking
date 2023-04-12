@@ -38,6 +38,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.concurrent.TimeUnit;
+
 import ca.friends.and.co.it.SmartParking.R;
 
 /**
@@ -144,16 +146,18 @@ public class HomeFragment extends Fragment {
 
         final TextView rushiSensorTV = new TextView(getActivity().getApplicationContext());
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference dbRef = firebaseDatabase.getReference("Motion sensor/");
+        DatabaseReference dbRef2 = firebaseDatabase.getReference("Motion sensor");
 
-        dbRef.addValueEventListener(new ValueEventListener() {
+        dbRef2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(!snapshot.exists()) {
-                    String dbValue = snapshot.getValue(String.class);
+                    String dbValue = snapshot.getValue().toString();
                     value = dbValue;
+                    Toast.makeText(getContext(), "Motion Sensor: "+value, Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(getContext(), "Cannot read data from database", Toast.LENGTH_SHORT).show();
+                    //value ="undetected";
                 }
             }
 
@@ -169,10 +173,17 @@ public class HomeFragment extends Fragment {
                 builder.setTitle("Open Parking Entrance");
                 if(value.equalsIgnoreCase("detected") && value != null){
                     builder.setMessage("Your car is detecting in Sensor, arm will open now!");
-                    dbRef.child("Servo").setValue("HIGH");
+                    dbRef2.child("Servo").setValue("HIGH");
                     Toast.makeText(getContext(), "ARM OPEN", Toast.LENGTH_SHORT).show();
 
-                } else if (value.equalsIgnoreCase("not Detected")) {
+                    try {
+                        TimeUnit.SECONDS.sleep(5);
+                        dbRef2.child("Servo").setValue("LOW");
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                } else if (value.equalsIgnoreCase("undetected")) {
                     builder.setMessage("Your car is not detected in sensor. \nPlease make your car move forward or backward and then try!");
 
                 }else{
@@ -180,7 +191,7 @@ public class HomeFragment extends Fragment {
                 }
 
                 //rushiSensorTV.setText("not detected");
-                String motionSensor = rushiSensorTV.getText().toString();
+                //String motionSensor = rushiSensorTV.getText().toString();
 
                 builder.setPositiveButton("Ok",(DialogInterface.OnClickListener) (dialog, which) -> {
                     // If user click no then dialog box is canceled.
