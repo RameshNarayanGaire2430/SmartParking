@@ -133,7 +133,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                Long s = (Long) snapshot.getValue();
+                String s = (String) snapshot.getValue();
                 textView18.setText(""+s);
 
             }
@@ -156,7 +156,7 @@ public class HomeFragment extends Fragment {
                     value = dbValue;
                     Toast.makeText(getContext(), "Motion Sensor: "+value, Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(getContext(), "Cannot read data from database", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Cannot read data from database", Toast.LENGTH_SHORT).show();
                     //value ="undetected";
                 }
             }
@@ -173,12 +173,12 @@ public class HomeFragment extends Fragment {
                 builder.setTitle("Open Parking Entrance");
                 if(value.equalsIgnoreCase("detected") && value != null){
                     builder.setMessage("Your car is detecting in Sensor, arm will open now!");
-                    dbRef2.child("Servo").setValue("HIGH");
+                    dbRef2.child("Gate Arm").setValue("Opening");
                     Toast.makeText(getContext(), "ARM OPEN", Toast.LENGTH_SHORT).show();
 
                     try {
                         TimeUnit.SECONDS.sleep(5);
-                        dbRef2.child("Servo").setValue("LOW");
+                        dbRef2.child("Gate Arm").setValue("Closing");
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
