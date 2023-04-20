@@ -104,13 +104,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/recieving_duration"
+        android:id="@+id/recieving_date"
         android:layout_width="163dp"
         android:layout_height="47dp"
-        android:layout_marginStart="127dp"
-        android:layout_marginTop="228dp"
-        android:text=""
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="172dp"
         android:background="@drawable/rectangleshape"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="29sp"
         android:textStyle="bold|italic"
@@ -118,13 +118,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/recieving_date"
-        android:layout_width="163dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="127dp"
-        android:layout_marginTop="172dp"
-        android:text=""
+        android:id="@+id/recieving_duration"
+        android:layout_width="72dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="228dp"
         android:background="@drawable/rectangleshape"
+        android:text="        "
+        android:textColor="@color/black"
+        android:textSize="29sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/hr"
+        android:layout_width="81dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginTop="228dp"
+        android:background="@drawable/rectangleshape"
+        android:text="hr/s"
         android:textColor="@color/black"
         android:textSize="29sp"
         android:textStyle="bold|italic"

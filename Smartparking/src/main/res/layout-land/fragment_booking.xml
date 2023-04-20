@@ -25,6 +25,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <TextView
+        android:id="@+id/duration_text3"
+        android:layout_width="149dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="344dp"
+        android:layout_marginTop="264dp"
+        android:text="Pick the time:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fromTimeTV"
+        android:layout_width="104dp"
+        android:layout_height="31dp"
+
+        android:layout_centerInParent="true"
+        android:layout_marginStart="492dp"
+        android:layout_marginTop="264dp"
+        android:padding="10dp"
+        android:text="Time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/parking_from_time"
+        android:layout_width="117dp"
+        android:layout_height="27dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="600dp"
+        android:layout_marginTop="264dp"
+        android:text="Select from Time"
+        android:textAllCaps="false"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Spinner
         android:id="@+id/durationSpinner"
         android:layout_width="119dp"
@@ -117,8 +156,8 @@
 
     <TextView
         android:id="@+id/duration_text2"
-        android:layout_width="186dp"
-        android:layout_height="44dp"
+        android:layout_width="187dp"
+        android:layout_height="31dp"
         android:layout_marginStart="344dp"
         android:layout_marginTop="228dp"
         android:text="Select Parking Spot: "
@@ -140,10 +179,10 @@
 
     <ImageView
         android:id="@+id/parking_spot_image"
-        android:layout_width="83dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="568dp"
-        android:layout_marginTop="228dp"
+        android:layout_width="89dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="552dp"
+        android:layout_marginTop="220dp"
         android:src="@drawable/parking_reserve_booking"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

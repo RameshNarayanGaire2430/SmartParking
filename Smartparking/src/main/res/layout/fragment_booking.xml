@@ -41,18 +41,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/toTimeTV"
-        android:layout_width="106dp"
-        android:layout_height="37dp"
-
-        android:layout_centerInParent="true"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="368dp"
-        android:padding="10dp"
-        android:text="Time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/parking_from_time"
@@ -67,18 +55,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/parking_to_time"
-        android:layout_width="124dp"
-        android:layout_height="41dp"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="284dp"
-        android:layout_marginTop="364dp"
-        android:text="Select to Time"
-        android:textAllCaps="false"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/durationSpinner"

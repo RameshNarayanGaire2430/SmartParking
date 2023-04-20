@@ -9,17 +9,21 @@ package ca.friends.and.co.it.SmartParking;
 // single responsibility principle used
 // This java class is only related to booking
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,8 +44,10 @@ import java.util.Calendar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -183,9 +189,7 @@ TextView datePicker;
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         durationSpinner.setAdapter(adapter);
         fromTimeButton = view.findViewById(R.id.parking_from_time);
-        toTimeButton = view.findViewById(R.id.parking_to_time);
         fromTimeTV = view.findViewById(R.id.fromTimeTV);
-        toTimeTV = view.findViewById(R.id.toTimeTV);
 
 
         reference.addValueEventListener(new ValueEventListener() {
@@ -261,6 +265,7 @@ TextView datePicker;
 
             }
         });
+/*
         toTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -283,6 +288,7 @@ TextView datePicker;
             }
         });
 
+*/
 
         parkingSpotPicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -311,7 +317,7 @@ TextView datePicker;
                                 spot4SelectedDB = snapshot.child("spot4Selected").getValue().toString();
                                 spot5SelectedDB = snapshot.child("Spot5Selected").getValue().toString();
                                 spot6SelectedDB = snapshot.child("spot6Selected").getValue().toString();
-                                Toast.makeText(getContext(), "Spot 1: " + spot1SelectedDB, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getContext(), "Spot 1: " + spot1SelectedDB, Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -541,7 +547,7 @@ TextView datePicker;
                 bookingName = fullname.getText().toString();
                 bookingContact = contact.getText().toString();
                 bookingDate = selectedDate.getText().toString();
-                String durBook = durationSpinner.toString().trim();
+                String durBook = durationSpinner.getSelectedItem().toString().trim();
                 bookingDuration = durBook;
 //                String datePicker = date.getText().toString();
 
@@ -549,21 +555,23 @@ TextView datePicker;
                 reference.child("User Data").child("contact").setValue(contact.getText().toString());
                 reference.child("User Data").child("Date").setValue(selectedDate.getText().toString());
                 reference.child("User Data").child("SpotNumber").setValue(parkingSpotNumber.getText().toString());
-                parkingDuration = (toHour+(toMinute/100)) - (fromHour+ (fromMinute/100));
+               // parkingDuration = (int)(toHour+(toMinute/100)) - (int)(fromHour+ (fromMinute/100));
+
                 reference.child("Booking Details").child("Duration").setValue(parkingDuration);
-                Toast.makeText(getContext(), "duration: "+parkingDuration, Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getContext(), "duration: "+parkingDuration, Toast.LENGTH_SHORT).show();
+
 
                 //saving data offline
                 editor.putString(getString(R.string.booking_name), fullname.getText().toString());
                 editor.putString(getString(R.string.booking_contact), contact.getText().toString());
                 editor.putString(getString(R.string.bookingdate), selectedDate.getText().toString());
-                editor.putString(getString(R.string.booking_duration1), durationSpinner.toString());
+                editor.putString(getString(R.string.booking_duration1), durBook);
 
                 resultBundle.putString("fullname", fullname.getText().toString());
                 resultBundle.putString("contact", contact.getText().toString());
                 resultBundle.putString("date", selectedDate.getText().toString());
-                resultBundle.putString("duration", durationSpinner.toString());
-
+                resultBundle.putString("duration", durBook);
+               // sendSMS(contact.getText().toString());
 
                 AsyncTaskRunner runner = new AsyncTaskRunner();
                 String sleepTime = "3";
@@ -571,6 +579,59 @@ TextView datePicker;
 
             }
         });
+    }
+    public void sendSMS(String phoneNum){
+
+
+        if ((ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_SMS) +
+                ContextCompat.checkSelfPermission(getContext(), Manifest.permission.SEND_SMS))
+                != PackageManager.PERMISSION_GRANTED) {
+
+// Permission is not granted
+// Should we show an explanation?
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),"Manifest.permission.READ_SMS") ||
+                    ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),"Manifest.permission.READ_SMS")) {
+//                Toast.makeText(getContext(), "Permiss not denied", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "Permiss denied", Toast.LENGTH_SHORT).show();
+//                SmsManager smsManager = SmsManager.getDefault();
+//                smsManager.sendTextMessage("4379875581",null,"Thanks for booking with us!",null, null);
+//                Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+//                sendIntent.putExtra("sms_body", "default content");
+//                sendIntent.setType("vnd.android-dir/mms-sms");
+//                startActivity(sendIntent);
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+
+                // No explanation needed; request the permission
+//                ActivityCompat.requestPermissions(getActivity(),
+//                        new String[]{"Manifest.permission.READ_SMS, Manifest.permission.SEND_SMS"},
+//                        1);
+//                SmsManager smsManager = SmsManager.getDefault();
+//                smsManager.sendTextMessage("4379875581",null,"Thanks for booking with us!",null, null);
+//                Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+//                sendIntent.putExtra("sms_body", "default content");
+//                sendIntent.setType("vnd.android-dir/mms-sms");
+//                startActivity(sendIntent);
+                // REQUEST_CODE is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
+
+        else {
+            // Permission has already been granted
+//            SmsManager smsManager = SmsManager.getDefault();
+//            smsManager.sendTextMessage("4379875581",null,"Thanks for booking with us!",null, null);
+//            Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+//            sendIntent.putExtra("sms_body", "default content");
+//            sendIntent.setType("vnd.android-dir/mms-sms");
+//            startActivity(sendIntent);
+        }
+
     }
 
     @Override
